@@ -20,3 +20,5 @@ bash run-integration-tests.sh $cSharpSdkGitRepoFolder
 bash create-nuget-package.sh $cSharpSdkGitRepoFolder
 
 bash ./git-push-csharp-sdk.sh $cSharpSdkGitRepoFolder
+
+# add create PR
