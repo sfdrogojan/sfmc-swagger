@@ -1,6 +1,8 @@
 #!/bin/sh
 
-pushd "../openapi-2.0/generated/src"
+generatedFolder=$1
+
+pushd "$generatedFolder/src"
 
 pushd "Salesforce.MarketingCloud"
 

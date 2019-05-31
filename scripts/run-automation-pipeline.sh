@@ -3,14 +3,20 @@ set -e
 
 bash build-custom-csharp-generator.sh
 
-bash generate-csharp-api-client.sh
+bash clone-csharp-sdk-git-repo.sh
 
-bash build-solution-core.sh
+rootFolderForRepos=$(dirname $(dirname $(dirname $(readlink -f "$0"))))
+cSharpSdkRepoName="sfmc-csharp-sdk"
+cSharpSdkGitRepoFolder="$rootFolderForRepos/$cSharpSdkRepoName"
 
-bash run-unit-tests.sh
+bash generate-csharp-api-client.sh $cSharpSdkGitRepoFolder
 
-bash run-integration-tests.sh
+bash build-solution-core.sh $cSharpSdkGitRepoFolder
 
-bash create-nuget-package.sh
+bash run-unit-tests.sh $cSharpSdkGitRepoFolder
 
-# bash ./git-push.sh
+bash run-integration-tests.sh $cSharpSdkGitRepoFolder
+
+bash create-nuget-package.sh $cSharpSdkGitRepoFolder
+
+bash ./git-push-csharp-sdk.sh $cSharpSdkGitRepoFolder
