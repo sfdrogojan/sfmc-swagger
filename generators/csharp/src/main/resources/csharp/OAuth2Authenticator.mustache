@@ -1,0 +1,26 @@
+{{>partial_header}}
+using System.Net;
+using RestSharp;
+using RestSharp.Authenticators;
+
+namespace {{packageName}}.Authentication
+{
+    internal class OAuth2Authenticator : IAuthenticator
+    {
+        private readonly IAuthService authService;
+
+        public OAuth2Authenticator(IAuthService authService)
+        {
+            this.authService = authService;
+        }
+
+        public void Authenticate(IRestClient client, IRestRequest request)
+        {
+            ServicePointManager.SecurityProtocol = (SecurityProtocolType)3072;
+
+            var authorizationToken = authService.GetAuthorizationToken();
+
+            request.AddHeader("Authorization", $"{authorizationToken.Type} {authorizationToken.Value}");
+        }
+    }
+}
