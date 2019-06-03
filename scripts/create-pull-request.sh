@@ -5,7 +5,7 @@ ROOT_DIRECTORY=$(dirname $(dirname $(readlink -f "$0")))
 if [ $OSTYPE = "msys" ]; then # Windows
     HUB_PATH="$ROOT_DIRECTORY/cli/hub-windows-amd64-2.11.2"
 else
-    HUB_PATH="$ROOT_DIRECTORY/cli/hub-linux-arm64-2.11.2"
+    HUB_PATH="$ROOT_DIRECTORY/cli/hub-linux-amd64-2.11.2"
 fi
 
 echo $HUB_PATH
