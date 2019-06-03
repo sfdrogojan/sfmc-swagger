@@ -1,9 +1,9 @@
 #!/bin/sh
 # Run Unit Tests
 
-generatedFolder=$1
+CSHARP_SDK_FOLDER=$1
 
-dotnet test $generatedFolder/src/Salesforce.MarketingCloud.UnitTests/Salesforce.MarketingCloud.UnitTests.csproj \
+dotnet test $CSHARP_SDK_FOLDER/src/Salesforce.MarketingCloud.UnitTests/Salesforce.MarketingCloud.UnitTests.csproj \
     --logger:console \
     --verbosity:minimal
 

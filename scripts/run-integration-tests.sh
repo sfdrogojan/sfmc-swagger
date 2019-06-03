@@ -1,9 +1,9 @@
 #!/bin/sh
 # Run Integration Tests
 
-generatedFolder=$1
+CSHARP_SDK_FOLDER=$1
 
-dotnet test $generatedFolder/src/Salesforce.MarketingCloud.Test/Salesforce.MarketingCloud.Test.csproj \
+dotnet test $CSHARP_SDK_FOLDER/src/Salesforce.MarketingCloud.Test/Salesforce.MarketingCloud.Test.csproj \
     --logger:console
 
 exit $?

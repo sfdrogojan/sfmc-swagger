@@ -1,6 +1,6 @@
 #!/bin/sh
 
-CSHARP_SDK_FOLDER=$1
+CSHARP_SDK_FOLDER="$1/sfmc-csharp-sdk"
 
 pushd "$CSHARP_SDK_FOLDER/src"
 

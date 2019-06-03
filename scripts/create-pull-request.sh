@@ -13,7 +13,8 @@ export PATH=$HUB_PATH:$PATH
 
 hub version
 
-pushd $1
+CSHARP_SDK_FOLDER=$1
+pushd $CSHARP_SDK_FOLDER
 
 git fetch
 git checkout dev
