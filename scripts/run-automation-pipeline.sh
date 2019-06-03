@@ -22,5 +22,3 @@ bash create-nuget-package.sh $cSharpSdkGitRepoFolder
 bash git-push-csharp-sdk.sh $cSharpSdkGitRepoFolder
 
 bash create-pull-request.sh $cSharpSdkGitRepoFolder
-
-# add create PR
