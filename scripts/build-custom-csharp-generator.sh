@@ -1,7 +1,9 @@
 #!/bin/sh
 
-cd ../generators/csharp
+pushd ../generators/csharp
 
 mvn clean package
+
+popd
 
 exit $?
