@@ -17,7 +17,6 @@ pushd $1
 
 git fetch
 git checkout dev
-git pull origin dev
 
 hub pull-request -m "Automation pipeline update"
 
