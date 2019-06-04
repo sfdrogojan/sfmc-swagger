@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # common variables used in automation pipeline scripts
 
