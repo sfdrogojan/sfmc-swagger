@@ -1,6 +1,6 @@
 #!/bin/sh
 
-SFMC_SWAGGER_ROOT_FOLDER=$1
+source ./setup-variables.sh
 
 pushd ${SFMC_SWAGGER_ROOT_FOLDER}/generators/csharp
 

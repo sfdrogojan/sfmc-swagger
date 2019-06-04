@@ -1,8 +1,8 @@
 #!/bin/sh
 
-CSHARP_SDK_FOLDER="$1/sfmc-csharp-sdk"
+source ./setup-variables.sh
 
-pushd "$CSHARP_SDK_FOLDER/src"
+pushd "${CSHARP_SDK_GIT_REPO_FOLDER}/src"
 
 pushd "Salesforce.MarketingCloud"
 
