@@ -1,6 +1,6 @@
 #!/bin/sh
 
-source ./setup-variables.sh
+. ./setup-variables.sh
 
 CLI_JAR="${SFMC_SWAGGER_ROOT_FOLDER}/cli/swagger-codegen-cli-2.4.4.jar"
 CUSTOM_GENERATOR_JAR="${SFMC_SWAGGER_ROOT_FOLDER}/generators/csharp/target/csharp-swagger-codegen-1.0.0.jar"

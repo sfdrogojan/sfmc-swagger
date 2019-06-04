@@ -1,6 +1,6 @@
 #!/bin/sh
 
-source ./setup-variables.sh
+. ./setup-variables.sh
 
 # set hub in PATH
 if [ $OSTYPE = "msys" ]; then # Windows

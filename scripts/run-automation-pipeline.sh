@@ -1,7 +1,7 @@
 #!/bin/sh
 set -e
 
-source ./common-variables.sh
+. ./common-variables.sh
 
 echo "SFMC_SWAGGER_ROOT_FOLDER=${SFMC_SWAGGER_ROOT_FOLDER}"
 echo "SDK_REPOS_ROOT_FOLDER=${SDK_REPOS_ROOT_FOLDER}"

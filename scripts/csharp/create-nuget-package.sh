@@ -1,6 +1,6 @@
 #!/bin/sh
 
-source ./setup-variables.sh
+. ./setup-variables.sh
 
 pushd "${CSHARP_SDK_FOLDER}/src/Salesforce.MarketingCloud"
 

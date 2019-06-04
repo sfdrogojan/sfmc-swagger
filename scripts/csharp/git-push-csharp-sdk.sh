@@ -1,6 +1,6 @@
 #!/bin/sh
 
-source ./setup-variables.sh
+. ./setup-variables.sh
 
 # Change path to the root folder of the repo
 pushd $CSHARP_SDK_GIT_REPO_FOLDER

@@ -1,6 +1,6 @@
 #!/bin/sh
 
-source ./setup-variables.sh
+. ./setup-variables.sh
 
 CSHARP_SDK_GIT_REPO_FOLDER="${SDK_REPOS_ROOT_FOLDER}/${CSHARP_SDK_GIT_REPO_ID}"
 
