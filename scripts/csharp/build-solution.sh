@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 
-generatedFolder=$1
+source ./setup-variables.sh
 
-pushd "$generatedFolder/src"
+pushd "${CSHARP_SDK_GIT_REPO_FOLDER}/src"
 
 pushd "Salesforce.MarketingCloud"
 

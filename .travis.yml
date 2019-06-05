@@ -15,4 +15,4 @@ before_script:
   - chmod -R +x scripts
   - cd scripts
 script:
-  - /bin/sh ./run-automation-pipeline.sh
+  - /bin/bash ./run-automation-pipeline.sh
