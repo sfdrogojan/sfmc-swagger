@@ -15,6 +15,41 @@
   },
   "host": "www.exacttargetapis.com",
   "paths": {
+    "/address/v1/validateEmail": {
+      "post": {
+        "tags": [
+          "address"
+        ],
+        "summary": "validateEmail",
+        "description": "Validates an email by specifying the email address and validators to be used in the request body of the HTTP POST. You can use more than one validator in the same call.",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "JSON parameters",
+            "schema": {
+              "$ref": "#/definitions/RequestValidateEmail"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A validation response",
+            "schema": {
+              "$ref": "#/definitions/ResponseValidateEmail_200"
+            }
+          },
+          "default": {
+            "description": "Unexpected error",
+            "schema": {
+              "$ref": "#/definitions/ResponseValidateEmail_default"
+            }
+          }
+        },
+        "x-md-detail": "validateEmail.htm",
+        "x-published": true
+      }
+    },
     "/asset/v1/content/assets/{id}": {
       "get": {
         "tags": [
@@ -106,13 +141,15 @@
         ],
         "summary": "deleteAsset",
         "description": "Deletes an asset.",
-        "parameters": [{
-          "name": "id",
-          "in": "path",
-          "description": "The ID of the asset to delete",
-          "required": true,
-          "type": "number"
-        }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the asset to delete",
+            "required": true,
+            "type": "number"
+          }
+        ],
         "responses": {
           "400": {
             "description": "Bad request",
@@ -138,14 +175,16 @@
         ],
         "summary": "createAsset",
         "description": "Creates a new asset.",
-        "parameters": [{
-          "name": "body",
-          "in": "body",
-          "description": "JSON Parameters",
-          "schema": {
-            "$ref": "#/definitions/Asset"
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "JSON Parameters",
+            "schema": {
+              "$ref": "#/definitions/Asset"
+            }
           }
-        }],
+        ],
         "responses": {
           "200": {
             "description": "A single asset",
@@ -177,14 +216,16 @@
         ],
         "summary": "createCampaign",
         "description": "Creates a campaign.",
-        "parameters": [{
-          "name": "body",
-          "in": "body",
-          "description": "JSON Parameters",
-          "schema": {
-            "$ref": "#/definitions/Campaign"
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "JSON Parameters",
+            "schema": {
+              "$ref": "#/definitions/Campaign"
+            }
           }
-        }],
+        ],
         "responses": {
           "200": {
             "description": "A single campaign",
@@ -205,21 +246,23 @@
         ],
         "summary": "getCampaign",
         "description": "Retrieves a campaign.",
-        "parameters": [{
-          "name": "id",
-          "in": "path",
-          "description": "Campaign ID",
-          "required": true,
-          "type": "number"
-        }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Campaign ID",
+            "required": true,
+            "type": "number"
+          }
+        ],
         "responses": {
           "200": {
             "description": "A single campaign",
             "schema": {
               "$ref": "#/definitions/Campaign"
             }
-    }
-  },
+          }
+        },
         "x-md-detail": "getCampaign.htm",
         "x-published": true,
         "operationId": "getCampaignById"
@@ -230,13 +273,15 @@
         ],
         "summary": "deleteCampaign",
         "description": "Deletes a campaign.",
-        "parameters": [{
-          "name": "id",
-          "in": "path",
-          "description": "The ID of the campaign to delete",
-          "required": true,
-          "type": "number"
-        }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the campaign to delete",
+            "required": true,
+            "type": "number"
+          }
+        ],
         "responses": {
           "400": {
             "description": "Bad request",
@@ -254,10 +299,69 @@
         "x-md-detail": "deleteCampaign.htm",
         "x-published": true,
         "operationId": "deleteCampaignById"
-    }
+      }
     }
   },
   "definitions": {
+    "ResponseValidateEmail_default": {
+      "type": "object",
+      "required": [
+        "email",
+        "failedValidation",
+        "valid"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Email address that was validated"
+        },
+        "failedValidation": {
+          "type": "string",
+          "description": "Validator that failed: SyntaxValidator, MXValidator, or ListDetectiveValidator"
+        },
+        "valid": {
+          "type": "string",
+          "description": "Whether it was valid or not"
+        }
+      }
+    },
+    "ResponseValidateEmail_200": {
+      "type": "object",
+      "required": [
+        "email",
+        "valid"
+      ],
+      "properties": {
+        "email": {
+          "type": "string",
+          "description": "Email address that was validated"
+        },
+        "valid": {
+          "type": "string",
+          "description": "Whether it was valid or not"
+        }
+      }
+    },
+    "RequestValidateEmail": {
+      "type": "object",
+      "required": [
+        "email",
+        "validators"
+      ],
+      "properties": {
+        "email": {
+          "description": "Email address to be validated",
+          "type": "string"
+        },
+        "validators": {
+          "description": "List of validators to check email against. Validators include: SyntaxValidator, MXValidator, and ListDetectiveValidator",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "ApiError": {
       "type": "object",
       "properties": {
