@@ -339,11 +339,15 @@
         },
         "Name": {
           "description": "Name of the asset, set by the client",
-          "type": "string"
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 20
         },
         "Description": {
           "description": "Description of the asset, set by the client",
-          "type": "string"
+          "type": "string",
+          "minLength": 3,
+          "maxLength": 30
         },
         "Category": {
           "description": "ID of the category the asset belongs to",
