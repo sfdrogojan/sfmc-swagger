@@ -20,7 +20,9 @@ pushd $CSHARP_SDK_GIT_REPO_FOLDER
 git fetch
 git checkout $BRANCH_NAME
 
-hub pull-request -m "Automation pipeline update"
+TRIGGERED_BY_PULL_REQUEST=`hub pr list -b dev -f "%U"`
+
+hub pull-request -m "Automation pipeline update" -m "PR created due to ${TRIGGERED_BY_PULL_REQUEST}"
 
 popd
 
