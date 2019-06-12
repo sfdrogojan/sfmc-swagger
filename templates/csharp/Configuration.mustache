@@ -7,7 +7,9 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
+using Salesforce.MarketingCloud.Exceptions;
 
 namespace {{packageName}}.Client
 {
@@ -43,18 +45,40 @@ namespace {{packageName}}.Client
         /// </summary>
         public static readonly ExceptionFactory DefaultExceptionFactory = (methodName, response) =>
         {
-            var status = (int)response.StatusCode;
-            if (status >= 400)
+            var statusCode = (int)response.StatusCode;
+
+            if (statusCode >= 400)
             {
-                return new ApiException(status,
-                    string.Format("Error calling {0}: {1}", methodName, response.Content),
-                    response.Content);
+                var exceptionMessage = $"Error calling {methodName}: {response.Content}";
+                switch (response.StatusCode)
+                {
+                    case HttpStatusCode.BadRequest: //400
+                        return new BadRequestException(statusCode, exceptionMessage, response.Content);
+                    case HttpStatusCode.Unauthorized: //401
+                        return new AuthenticationFailureException(statusCode, exceptionMessage, response.Content);
+                    case HttpStatusCode.Forbidden: //403
+                        return new Exceptions.UnauthorizedAccessException(statusCode, exceptionMessage, response.Content);
+                    case HttpStatusCode.NotFound: //404
+                        return new ResourceNotFoundException(statusCode, exceptionMessage, response.Content);
+                    case HttpStatusCode.InternalServerError: //500
+                        return new InternalServerErrorException(statusCode, exceptionMessage, response.Content);
+                    case HttpStatusCode.BadGateway: //502
+                        return new BadGatewayException(statusCode, exceptionMessage, response.Content);
+                    case HttpStatusCode.ServiceUnavailable: //503
+                        return new ServiceUnavailableException(statusCode, exceptionMessage, response.Content);
+                    case HttpStatusCode.GatewayTimeout: //504
+                        return new GatewayTimeoutException(statusCode, exceptionMessage, response.Content);
+                    default:
+                        return new ApiException(statusCode, exceptionMessage, response.Content);
+                }
             }
-            {{^netStandard}}if (status == 0)
+            if (status == 0)
             {
-                return new ApiException(status,
-                    string.Format("Error calling {0}: {1}", methodName, response.ErrorMessage), response.ErrorMessage);
-            }{{/netStandard}}
+                var exceptionMessage = $"Error calling {methodName}: {response.ErrorMessage}";
+                return new ServerUnreachableException(statusCode, exceptionMessage, response.ErrorMessage);
+
+            }
+
             return null;
         };
 
@@ -109,7 +133,7 @@ namespace {{packageName}}.Client
         {
             UserAgent = "{{#httpUserAgent}}{{.}}{{/httpUserAgent}}{{^httpUserAgent}}Swagger-Codegen/{{packageVersion}}/csharp{{/httpUserAgent}}";
             BasePath = "{{{basePath}}}";
-            DefaultHeader = new {{^net35}}Concurrent{{/net35}}Dictionary<string, string>();
+            DefaultHeader = RuntimeInformationProvider.ClientEnvironmentRuntimeInformation;
             ApiKey = new {{^net35}}Concurrent{{/net35}}Dictionary<string, string>();
             ApiKeyPrefix = new {{^net35}}Concurrent{{/net35}}Dictionary<string, string>();
 
