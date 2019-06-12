@@ -72,11 +72,11 @@ namespace {{packageName}}.Client
                         return new ApiException(statusCode, exceptionMessage, response.Content);
                 }
             }
-            if (status == 0)
+
+            if (statusCode == 0)
             {
                 var exceptionMessage = $"Error calling {methodName}: {response.ErrorMessage}";
                 return new ServerUnreachableException(statusCode, exceptionMessage, response.ErrorMessage);
-
             }
 
             return null;
