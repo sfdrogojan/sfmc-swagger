@@ -408,16 +408,7 @@
           "type": "object"
         },
         "sharingProperties": {
-          "description": "Allows you to share content with one or more business units that have Content Builder Sharing enabled. See <a href=\"sharing.htm\">Sharing</a> for additional information.",
-          "type": "object"
-        },
-        "sharingProperties.sharedWith": {
-          "description": "List of MID IDs the asset is shared with",
-          "type": "object"
-        },
-        "sharingProperties.sharingType": {
-          "description": "Indicates the permission that you are granting to the list of MIDs in sharedWith. Possible values are view, edit, or local.",
-          "type": "string"
+          "$ref": "#/definitions/SharingProperties"
         },
         "Template": {
           "description": "Template the asset follows",
@@ -445,15 +436,18 @@
       "properties": {
         "Name": {
           "description": "Name of the campaign with a maximum length of 128 characters",
-          "type": "string"
+          "type": "string",
+          "maxLength": 128
         },
         "Description": {
           "description": "Description of the campaign with a maximum length of 512 characters",
-          "type": "string"
+          "type": "string",
+          "maxLength": 512
         },
         "CampaignCode": {
           "description": "Unique identifier for the campaign with a maximum length of 36 characters",
-          "type": "string"
+          "type": "string",
+          "maxLength": 36
         },
         "Color": {
           "description": "Hex color value",
@@ -478,6 +472,24 @@
           "format": "date-time"
         }
       }
+    },
+    "SharingProperties": {
+       "type": "object",
+       "properties": {
+          "sharingType": {
+            "description": "Indicates the permission that you are granting to the list of MIDs in sharedWith. Possible values are view, edit, or local.",
+            "type": "string",
+            "enum": ["view", "edit", "local"]
+          },
+          "sharedWith": {
+            "description": "List of MID IDs the asset is shared with",
+            "type": "array",
+            "items": {
+              "type": "integer"
+            },
+            "maxItems": 100
+        }
+       }
     }
   }
 }
