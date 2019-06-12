@@ -14,13 +14,19 @@ export PATH=$HUB_PATH:$PATH
 
 hub version
 
+pushd ${SFMC_SWAGGER_ROOT_FOLDER}
+
+TRIGGERED_BY_PULL_REQUEST=`hub pr list -f "%U"`
+
+popd
+
 # create pull request
 pushd $CSHARP_SDK_GIT_REPO_FOLDER
 
 git fetch
 git checkout $BRANCH_NAME
 
-hub pull-request -m "Automation pipeline update"
+hub pull-request -m "Automation pipeline update" -m "PR created due to ${TRIGGERED_BY_PULL_REQUEST}"
 
 popd
 
