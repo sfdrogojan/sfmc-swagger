@@ -2,8 +2,6 @@
 
 # csharp pipeline steps
 
-bash ./build-custom-generator.sh
-
 bash ./clone-csharp-sdk-git-repo.sh
 
 bash ./generate-csharp-api-client.sh
