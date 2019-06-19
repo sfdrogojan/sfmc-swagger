@@ -106,13 +106,15 @@
         ],
         "summary": "deleteAsset",
         "description": "Deletes an asset.",
-        "parameters": [{
-          "name": "id",
-          "in": "path",
-          "description": "The ID of the asset to delete",
-          "required": true,
-          "type": "number"
-        }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the asset to delete",
+            "required": true,
+            "type": "number"
+          }
+        ],
         "responses": {
           "400": {
             "description": "Bad request",
@@ -138,14 +140,16 @@
         ],
         "summary": "createAsset",
         "description": "Creates a new asset.",
-        "parameters": [{
-          "name": "body",
-          "in": "body",
-          "description": "JSON Parameters",
-          "schema": {
-            "$ref": "#/definitions/Asset"
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "JSON Parameters",
+            "schema": {
+              "$ref": "#/definitions/Asset"
+            }
           }
-        }],
+        ],
         "responses": {
           "200": {
             "description": "A single asset",
@@ -177,14 +181,16 @@
         ],
         "summary": "createCampaign",
         "description": "Creates a campaign.",
-        "parameters": [{
-          "name": "body",
-          "in": "body",
-          "description": "JSON Parameters",
-          "schema": {
-            "$ref": "#/definitions/Campaign"
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "JSON Parameters",
+            "schema": {
+              "$ref": "#/definitions/Campaign"
+            }
           }
-        }],
+        ],
         "responses": {
           "200": {
             "description": "A single campaign",
@@ -205,21 +211,23 @@
         ],
         "summary": "getCampaign",
         "description": "Retrieves a campaign.",
-        "parameters": [{
-          "name": "id",
-          "in": "path",
-          "description": "Campaign ID",
-          "required": true,
-          "type": "number"
-        }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "Campaign ID",
+            "required": true,
+            "type": "number"
+          }
+        ],
         "responses": {
           "200": {
             "description": "A single campaign",
             "schema": {
               "$ref": "#/definitions/Campaign"
             }
-    }
-  },
+          }
+        },
         "x-md-detail": "getCampaign.htm",
         "x-published": true,
         "operationId": "getCampaignById"
@@ -230,13 +238,15 @@
         ],
         "summary": "deleteCampaign",
         "description": "Deletes a campaign.",
-        "parameters": [{
-          "name": "id",
-          "in": "path",
-          "description": "The ID of the campaign to delete",
-          "required": true,
-          "type": "number"
-        }],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "description": "The ID of the campaign to delete",
+            "required": true,
+            "type": "number"
+          }
+        ],
         "responses": {
           "400": {
             "description": "Bad request",
@@ -254,7 +264,7 @@
         "x-md-detail": "deleteCampaign.htm",
         "x-published": true,
         "operationId": "deleteCampaignById"
-    }
+      }
     },
     "/messaging/v1/email/definitions/": {
       "post": {
@@ -309,42 +319,43 @@
         "x-published": true,
         "operationId": "createEmailDefinition"
       },
-      "get":{
+      "get": {
         "tags": [
           "emailDefinition"
         ],
         "summary": "getEmailDefinitions",
         "description": "Gets a list of send definitions.",
-        "parameters": [{
-          "name": "$filter",
-          "in": "query",
-          "description": "Filter by status type. Accepted values are active, inactive, or deleted. Valid operations are eq and neq.",
-          "required": false,
-          "type": "string"
-        },
-        {
-          "name": "$pageSize",
-          "in": "query",
-          "description": "Number of definitions, which are array elements, to return per paged response.",
-          "required": false,
-          "type": "number"
-        },
-        {
-          "name": "$page",
-          "in": "query",
-          "description": "Page number to return.",
-          "required": false,
-          "type": "number"
-        },
-        {
-          "name": "$orderBy",
-          "in": "query",
-          "description": "Sort by a dimension. You can sort by only one dimension. Accepted values are definitionKey, name, createdDate, modifiedDate, and status.",
-          "required": false,
-          "type": "string"
-        }
-      ],
-        "responses":{
+        "parameters": [
+          {
+            "name": "$filter",
+            "in": "query",
+            "description": "Filter by status type. Accepted values are active, inactive, or deleted. Valid operations are eq and neq.",
+            "required": false,
+            "type": "string"
+          },
+          {
+            "name": "$pageSize",
+            "in": "query",
+            "description": "Number of definitions, which are array elements, to return per paged response.",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "$page",
+            "in": "query",
+            "description": "Page number to return.",
+            "required": false,
+            "type": "number"
+          },
+          {
+            "name": "$orderBy",
+            "in": "query",
+            "description": "Sort by a dimension. You can sort by only one dimension. Accepted values are definitionKey, name, createdDate, modifiedDate, and status.",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "responses": {
           "200": {
             "description": "Email definitions successfully retrieved",
             "schema": {
@@ -374,21 +385,24 @@
         "x-published": true,
         "operationId": "getEmailDefinitions"
       }
-    },"/messaging/v1/email/definitions/{definitionKey}":{
-      "delete":{
+    },
+    "/messaging/v1/email/definitions/{definitionKey}": {
+      "delete": {
         "tags": [
           "emailDefinition"
         ],
         "summary": "deleteEmailDefinition",
         "description": "Deletes the definition for an email.",
-        "parameters": [{
-          "name": "definitionKey",
-          "in": "path",
-          "description": "Unique identifier of the definition to delete",
-          "required": true,
-          "type": "string"
-        }],
-        "responses":{
+        "parameters": [
+          {
+            "name": "definitionKey",
+            "in": "path",
+            "description": "Unique identifier of the definition to delete",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
           "200": {
             "description": "Definition of email successfully deleted",
             "schema": {
@@ -424,7 +438,7 @@
         "x-published": true,
         "operationId": "deleteEmailDefinitionByDefinitionKey"
       },
-      "patch":{
+      "patch": {
         "tags": [
           "emailDefinition"
         ],
@@ -447,7 +461,7 @@
             }
           }
         ],
-        "responses":{
+        "responses": {
           "200": {
             "description": "A single definition for an email",
             "schema": {
@@ -476,20 +490,22 @@
         "x-published": true,
         "operationId": "partiallyUpdateEmailDefinition"
       },
-      "get":{
+      "get": {
         "tags": [
           "emailDefinition"
         ],
         "summary": "getEmailDefinition",
         "description": "Gets send definition configuration details for a definition key.",
-        "parameters": [{
-          "name": "definitionKey",
-          "in": "path",
-          "description": "Unique identifier of the definition to get",
-          "required": true,
-          "type": "string"
-        }],
-        "responses":{
+        "parameters": [
+          {
+            "name": "definitionKey",
+            "in": "path",
+            "description": "Unique identifier of the definition to get",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
           "200": {
             "description": "Definition of email successfully retrieved",
             "schema": {
@@ -734,14 +750,14 @@
         "createdDate": {
           "description": "The date the object was created.",
           "type": "string",
-          "format":"date-time",
-          "readOnly":true
+          "format": "date-time",
+          "readOnly": true
         },
         "modifiedDate": {
           "description": "The date the object was modified.",
           "type": "string",
-          "format":"date-time",
-          "readOnly":true
+          "format": "date-time",
+          "readOnly": true
         }
       }
     },
@@ -754,10 +770,10 @@
         "subscriptions"
       ],
       "properties": {
-        "requestId":{
+        "requestId": {
           "description": "The ID of the request",
           "type": "string",
-          "readOnly":true
+          "readOnly": true
         },
         "definitionKey": {
           "description": "Unique, user-generated key to access the definition object.",
@@ -767,10 +783,10 @@
           "description": "Name of the definition. Must be unique.",
           "type": "string"
         },
-        "content":{
+        "content": {
           "$ref": "#/definitions/Content"
         },
-        "subscriptions":{
+        "subscriptions": {
           "$ref": "#/definitions/Subscriptions"
         },
         "status": {
@@ -785,45 +801,45 @@
           "description": "Marketing Cloud external key of a sending classification defined in Email Studio Administration. Only transactional classifications are permitted. Default is default transactional.",
           "type": "string"
         },
-        "options":{
+        "options": {
           "$ref": "#/definitions/Options"
         },
         "createdDate": {
           "description": "The date the object was created.",
           "type": "string",
-          "format":"date-time",
-          "readOnly":true
+          "format": "date-time",
+          "readOnly": true
         },
         "modifiedDate": {
           "description": "The date the object was modified.",
           "type": "string",
-          "format":"date-time",
-          "readOnly":true
+          "format": "date-time",
+          "readOnly": true
         }
       }
     },
-    "EmailDefinitionsResponse":{
+    "EmailDefinitionsResponse": {
       "type": "object",
-      "properties":{
-        "requestId":{
+      "properties": {
+        "requestId": {
           "description": "The ID of the request",
           "type": "string"
         },
-        "definitions":{
+        "definitions": {
           "type": "array",
           "items": {
-                "$ref": "#/definitions/EmailDefinition"
-            }
+            "$ref": "#/definitions/EmailDefinition"
+          }
         },
-        "count":{
+        "count": {
           "description": "Number of pages",
           "type": "number"
         },
-        "page":{
+        "page": {
           "description": "Page number to return.",
           "type": "number"
         },
-        "pageSize":{
+        "pageSize": {
           "description": "Number of definitions, which are array elements, to return per paged response.",
           "type": "number"
         }
@@ -841,7 +857,7 @@
         }
       }
     },
-    "Subscriptions":{
+    "Subscriptions": {
       "type": "object",
       "required": [
         "list"
@@ -865,58 +881,62 @@
         }
       }
     },
-    "Options":{
+    "Options": {
       "type": "object",
-      "properties":{
+      "properties": {
         "trackLinks": {
           "description": "Wraps links for tracking and reporting. Default is true.",
           "type": "boolean"
         }
       }
     },
-    "SuccessfulEmailDefinitionDelete":{
+    "SuccessfulEmailDefinitionDelete": {
       "type": "object",
-      "properties":{
-        "message":{
+      "properties": {
+        "message": {
           "description": "The response message",
           "type": "string"
         },
-        "requestId":{
+        "requestId": {
           "description": "The ID of the request",
           "type": "string"
         },
-        "deletedDefinitionKey":{
+        "deletedDefinitionKey": {
           "description": "The key of the deleted definition",
           "type": "string"
         }
       }
     },
-    "EmailDefinitionDescription":{
+    "EmailDefinitionDescription": {
       "type": "object",
-      "properties":{
-        "description":{
+      "properties": {
+        "description": {
           "description": "The email definition description",
           "type": "string"
         }
       }
     },
     "SharingProperties": {
-       "type": "object",
-       "properties": {
-          "sharingType": {
-            "description": "Indicates the permission that you are granting to the list of MIDs in sharedWith. Possible values are view, edit, or local.",
-            "type": "string",
-            "enum": ["view", "edit", "local"]
+      "type": "object",
+      "properties": {
+        "sharingType": {
+          "description": "Indicates the permission that you are granting to the list of MIDs in sharedWith. Possible values are view, edit, or local.",
+          "type": "string",
+          "enum": [
+            "view",
+            "edit",
+            "local"
+          ]
+        },
+        "sharedWith": {
+          "description": "List of MID IDs the asset is shared with",
+          "type": "array",
+          "items": {
+            "type": "integer"
           },
-          "sharedWith": {
-            "description": "List of MID IDs the asset is shared with",
-            "type": "array",
-            "items": {
-              "type": "integer"
-            },
-            "maxItems": 100
+          "maxItems": 100
         }
-       }
+      }
     }
   }
 }
