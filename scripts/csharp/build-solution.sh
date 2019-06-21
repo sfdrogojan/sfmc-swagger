@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./setup-variables.sh
+source ../setup-variables.sh
 
 pushd "${CSHARP_SDK_GIT_REPO_FOLDER}/src"
 
