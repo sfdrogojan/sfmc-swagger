@@ -4,5 +4,6 @@
     "artifactVersion": "1.0.0",
     "invokerPackage": "com.github.salesforce.marketingcloud.javasdk",
     "modelPackage": "com.github.salesforce.marketingcloud.javasdk.model",
-    "apiPackage": "com.github.salesforce.marketingcloud.javasdk.api"
+    "apiPackage": "com.github.salesforce.marketingcloud.javasdk.api",
+    "hideGenerationTimestamp": true
 }
