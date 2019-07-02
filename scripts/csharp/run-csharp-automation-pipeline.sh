@@ -6,6 +6,8 @@ bash ./clone-csharp-sdk-git-repo.sh
 
 bash ./generate-csharp-api-client.sh
 
+bash ./generate-client-class.sh
+
 bash ./build-solution.sh
 
 bash ./run-unit-tests.sh

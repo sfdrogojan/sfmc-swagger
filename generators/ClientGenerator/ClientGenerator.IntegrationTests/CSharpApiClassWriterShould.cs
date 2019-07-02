@@ -10,7 +10,7 @@ namespace ClientGenerator.IntegrationTests
         [Test]
         public void WriteFileToDisk()
         {
-            string apiFilePath = "FooApi.cs";
+            string apiFilePath = Path.Combine(Path.GetTempPath(), "FooApi.cs");
             string updatedContent = "foo foo";
             CSharpApiClassWriter.Write(apiFilePath, updatedContent);
 

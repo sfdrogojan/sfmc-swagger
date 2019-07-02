@@ -28,9 +28,7 @@ namespace ClientGenerator.UnitTests
             Assert.That(generatedProperty, Is.EqualTo(expected));
         }
 
-        [TestCase(new[] { "FooApi", "BarApi" }, @"using Salesforce.MarketingCloud.Client;
-
-namespace Salesforce.MarketingCloud.Api
+        [TestCase(new[] { "FooApi", "BarApi" }, @"namespace Salesforce.MarketingCloud.Api
 {
     public class Client
     {

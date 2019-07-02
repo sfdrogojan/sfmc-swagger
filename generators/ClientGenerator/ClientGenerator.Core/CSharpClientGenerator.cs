@@ -23,8 +23,6 @@ namespace ClientGenerator.Core
         public static string GenerateClientClass(IEnumerable<string> apiClassNames)
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine("using Salesforce.MarketingCloud.Client;");
-            sb.AppendLine();
             sb.AppendLine("namespace Salesforce.MarketingCloud.Api");
             sb.AppendLine("{");
             sb.AppendLine("    public class Client");

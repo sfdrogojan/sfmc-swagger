@@ -10,11 +10,12 @@ namespace ClientGenerator.IntegrationTests
     public class CSharpApiClassesRetrieverShould
     {
         [Test]
-        public void RetrieveOnlyApiClassNames()
+        public void RetrieveOnlyApiClassNamesOrderedAscending()
         {
             CreateApiFile("FooApi.cs", "foo");
             CreateApiFile("BarApi.cs", "bar");
             CreateApiFile("BazApi.cs", "baz");
+            CreateApiFile("Qux.cs", "qux");
 
             string apiFilesDirectory = Path.GetTempPath();
             var apiClassNames = CSharpApiClassesRetriever.GetNames(apiFilesDirectory);
