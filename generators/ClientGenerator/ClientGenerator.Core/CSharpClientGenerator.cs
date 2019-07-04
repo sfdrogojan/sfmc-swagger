@@ -33,7 +33,15 @@ namespace ClientGenerator.Core
             sb.AppendLine("        private readonly string accountId;");
             sb.AppendLine("        private readonly string scope;");
             sb.AppendLine();
-            sb.AppendLine("        public Client(string authBasePath, string clientId, string clientSecret, string accountId, string scope)");
+            sb.AppendLine("        /// <summary>");
+            sb.AppendLine(@"        /// Initializes a new instance of the <see cref=""Client""/> class.");
+            sb.AppendLine("        /// </summary>");
+            sb.AppendLine(@"        /// <param name=""authBasePath"">Your tenant-specific Authentication Base URI.</param>");
+            sb.AppendLine(@"        /// <param name=""clientId"">Client ID issued when you create the API integration in Installed Packages.</param>");
+            sb.AppendLine(@"        /// <param name=""clientSecret"">Client secret issued when you create the API integration in Installed Packages.</param>");
+            sb.AppendLine(@"        /// <param name=""accountId"">Account identifier, or MID, of the target business unit. Use to switch between business units.</param>");
+            sb.AppendLine(@"        /// <param name=""scope"">Space-separated list of data-access permissions for your application.</param>");
+            sb.AppendLine("        public Client(string authBasePath, string clientId, string clientSecret, string accountId, string scope = null)");
             sb.AppendLine("        {");
             sb.AppendLine("            this.authBasePath = authBasePath;");
             sb.AppendLine("            this.clientId = clientId;");

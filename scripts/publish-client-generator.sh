@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source "$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )/common-variables.sh"
+source ./common-variables.sh
 
 CLIENT_GENERATOR_ROOT_FOLDER=${SFMC_SWAGGER_ROOT_FOLDER}/generators/ClientGenerator
 CLI_ROOT_FOLDER=${SFMC_SWAGGER_ROOT_FOLDER}/cli
