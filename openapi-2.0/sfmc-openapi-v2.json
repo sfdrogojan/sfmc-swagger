@@ -654,7 +654,7 @@
           "202": {
             "description": "Accepted",
             "schema": {
-              "$ref": "#/definitions/ResponseSendEmailToMultipleRecipients"
+              "$ref": "#/definitions/ResponseSendDefinitionToMultipleRecipients"
             }
           },
           "400": {
@@ -713,7 +713,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/ResponseGetEmailsNotSentToRecipients"
+              "$ref": "#/definitions/ResponseGetDefinitionsNotSentToRecipients"
             }
           },
           "400": {
@@ -760,7 +760,7 @@
           "200": {
             "description": "Email send status for recipient succesfully retrieved.",
             "schema": {
-              "$ref": "#/definitions/ResponseGetEmailSendStatusForRecipient"
+              "$ref": "#/definitions/ResponseGetDefinitionSendStatusForRecipient"
             }
           },
           "400": {
@@ -805,7 +805,7 @@
             "in": "body",
             "description": "JSON Parameters",
             "schema": {
-              "$ref": "#/definitions/RequestSendMessageSingleRecipient"
+              "$ref": "#/definitions/RequestSendEmailToSingleRecipient"
             }
           }
         ],
@@ -813,7 +813,7 @@
           "202": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/ResponseSendEmailToSingleRecipient"
+              "$ref": "#/definitions/ResponseSendDefinitionToSingleRecipient"
             }
           },
           "400": {
@@ -1211,6 +1211,219 @@
         },
         "x-published": true,
         "operationId": "deleteQueuedMessagesForSMSDefinition"
+      }
+    },
+    "/messaging/v1/sms/messages/":{
+      "post": {
+        "tags": [
+          "transactionalMessaging"
+        ],
+        "summary": "sendSMSToMultipleRecipients",
+        "description": "Sends a message to multiple recipients using an email definition. You can provide a messageKey in the request; otherwise, the messageKey is automatically generated in the response.",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "JSON Parameters",
+            "schema": {
+              "$ref": "#/definitions/RequestSendSMSToMultipleRecipients"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "Accepted",
+            "schema": {
+              "$ref": "#/definitions/ResponseSendDefinitionToMultipleRecipients"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          },
+          "403": {
+            "description": "Permission error",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          }
+        },
+        "x-md-detail": "sendSMSToMultipleRecipients.htm",
+        "x-published": true,
+        "operationId": "sendSMSToMultipleRecipients"
+      },
+      "get": {
+        "tags": [
+          "transactionalMessaging"
+        ],
+        "summary": "getSMSsNotSentToRecipients",
+        "description": "Gets a paginated list of messages that were not sent, ordered from oldest to newest.",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "description": "Only notSent is supported.",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "$pageSize",
+            "in": "query",
+            "description": "Number of messageKeys (array elements) to return per response page.",
+            "required": false,
+            "type": "integer"
+          },
+          {
+            "name": "lastEventId",
+            "in": "query",
+            "description": "Event ID from which you want the response to start. To obtain the initial event ID, submit a request without a lastEventId. The events in the response are listed top to bottom from oldest to newest.",
+            "required": false,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ResponseGetDefinitionsNotSentToRecipients"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          }
+        },
+        "x-md-detail": "getSMSsNotSentToRecipients.htm",
+        "x-published": true,
+        "operationId": "getSMSsNotSentToRecipients"
+      }
+    },
+    "/messaging/v1/sms/messages/{messageKey}":{
+      "post": {
+        "tags": [
+          "transactionalMessaging"
+        ],
+        "summary": "sendSMSToSingleRecipient",
+        "description": "Sends a message to a single recipient via a SMS definition using a messageKey path parameter.",
+        "parameters": [
+          {
+            "name": "messageKey",
+						"in": "path",
+						"description": "Unique identifier of the definition used to track message status. The messageKey can be created automatically when you create a message, or you can provide it as part of the request. Each recipient in a request must have a unique messageKey. If you use a duplicate messageKey in the same send request, the message is rejected.",
+						"required": true,
+						"type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "JSON Parameters",
+            "schema": {
+              "$ref": "#/definitions/RequestSendSMSToSingleRecipient"
+            }
+          }
+        ],
+        "responses": {
+          "202": {
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/ResponseSendDefinitionToSingleRecipient"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          },
+          "403": {
+            "description": "Permission error",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          }
+        },
+        "x-md-detail": "sendSMSToSingleRecipient.htm",
+        "x-published": true,
+        "operationId": "sendSMSToSingleRecipient"
+      },
+      "get": {
+        "tags": [
+          "transactionalMessaging"
+        ],
+        "summary": "getSMSSendStatusForRecipient",
+        "description": "Gets the send status for a message. Because this route is rate-limited, use it for infrequent verification of a messageKey. To collect send status at scale, subscribe to transactional send events using the Event Notification Service.",
+        "parameters": [
+          {
+            "name": "messageKey",
+            "in": "path",
+            "description": "Unique identifier to track message send status. You must provide it in singleton requests using the recipient attribute. To provide message key in batch requests, use the recipients array attribute. If you don’t provide the message key for recipients, it’s generated in the response.",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "SMS send status for recipient succesfully retrieved.",
+            "schema": {
+              "$ref": "#/definitions/ResponseGetDefinitionSendStatusForRecipient"
+            }
+          },
+          "400": {
+            "description": "Bad request",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          },
+          "500": {
+            "description": "Server Error",
+            "schema": {
+              "$ref": "#/definitions/ApiError"
+            }
+          }
+        },
+        "x-md-detail": "getSMSSendStatusForRecipient.htm",
+        "x-published": true,
+        "operationId": "getSMSSendStatusForRecipient"
       }
     }
   },
@@ -1658,10 +1871,13 @@
           "items": {
             "$ref": "#/definitions/Recipient"
           }
+        },
+        "attributes": {
+          "$ref": "#/definitions/Attributes"
         }
       }
     },
-    "ResponseSendEmailToMultipleRecipients": {
+    "ResponseSendDefinitionToMultipleRecipients": {
       "type": "object",
       "properties": {
         "requestId": {
@@ -1680,7 +1896,7 @@
           "description": "",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/ResponseSendEmailToMultipleRecipientsInnerResponse"
+            "$ref": "#/definitions/ResponseSendDefinitionInnerResponse"
           }
         }
       }
@@ -1696,7 +1912,7 @@
           "type": "string"
         },
         "to": {
-          "description": "Channel address of the recipient. For email, it’s the recipient's email address.",
+          "description": "Channel address of the recipient. For email, it’s the recipient's email address. For SMS, it’s the recipient's E.164-based mobile number.",
           "type": "string"
         },
         "messageKey": {
@@ -1704,11 +1920,11 @@
           "type": "string"
         },
         "attributes": {
-          "type": "object"
+          "$ref": "#/definitions/Attributes"
         }
       }
     },
-    "ResponseSendEmailToMultipleRecipientsInnerResponse": {
+    "ResponseSendDefinitionInnerResponse": {
       "type": "object",
       "properties": {
         "messageKey": {
@@ -1725,7 +1941,7 @@
         }
       }
     },
-    "ResponseGetEmailSendStatusForRecipient": {
+    "ResponseGetDefinitionSendStatusForRecipient": {
       "type": "object",
       "properties": {
         "requestId": {
@@ -1746,11 +1962,11 @@
           "type": "string"
         },
         "info": {
-          "$ref": "#/definitions/ResponseGetEmailSendStatusForRecipientInfo"
+          "$ref": "#/definitions/ResponseGetDefinitionSendStatusForRecipientInfo"
         }
       }
     },
-    "ResponseGetEmailSendStatusForRecipientInfo": {
+    "ResponseGetDefinitionSendStatusForRecipientInfo": {
       "type": "object",
       "properties": {
         "messageKey": {
@@ -1775,7 +1991,7 @@
         }
       }
     },
-    "ResponseGetEmailsNotSentToRecipients": {
+    "ResponseGetDefinitionsNotSentToRecipients": {
       "type": "object",
       "properties": {
         "lastEventID": {
@@ -1786,7 +2002,7 @@
           "description": "",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/ResponseGetEmailsNotSentToRecipientsMessage"
+            "$ref": "#/definitions/ResponseGetDefinitionsNotSentToRecipientsMessage"
           }
         },
         "count": {
@@ -1804,7 +2020,7 @@
         }
       }
     },
-    "ResponseGetEmailsNotSentToRecipientsMessage": {
+    "ResponseGetDefinitionsNotSentToRecipientsMessage": {
       "type": "object",
       "properties": {
         "statusCode": {
@@ -1833,11 +2049,11 @@
           "type": "number"
         },
         "info": {
-          "$ref": "#/definitions/ResponseGetEmailsNotSentToRecipientsMessageInfo"
+          "$ref": "#/definitions/ResponseGetDefinitionsNotSentToRecipientsMessageInfo"
         }
       }
     },
-    "ResponseGetEmailsNotSentToRecipientsMessageInfo": {
+    "ResponseGetDefinitionsNotSentToRecipientsMessageInfo": {
       "type": "object",
       "properties": {
         "messageKey": {
@@ -1854,7 +2070,7 @@
         }
       }
     },
-    "RequestSendMessageSingleRecipient":{
+    "RequestSendEmailToSingleRecipient":{
       "type": "object",
       "required": [
         "definitionKey",
@@ -1870,7 +2086,7 @@
         }
       }
     },
-    "ResponseSendEmailToSingleRecipient":{
+    "ResponseSendDefinitionToSingleRecipient":{
       "type": "object",
       "properties": {
         "requestId": {
@@ -1885,7 +2101,7 @@
           "description": "",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/ResponseSendEmailToMultipleRecipientsInnerResponse"
+            "$ref": "#/definitions/ResponseSendDefinitionInnerResponse"
           }
         }
       }
@@ -2002,6 +2218,75 @@
         "pageSize": {
           "description": "Number of definitions, which are array elements, to return per paged response.",
           "type": "integer"
+        }
+      }
+    },
+    "RequestSendSMSToMultipleRecipients":{
+      "type": "object",
+      "required": [
+        "definitionKey",
+        "recipients"
+      ],
+      "properties": {
+        "definitionKey": {
+          "description": "Unique, user-generated key to access the definition object.",
+          "type": "string"
+        },
+        "recipients": {
+          "description": "Array of recipient objects that contain parameters and metadata for the recipients, such as send tracking and personalization attributes. Use this parameter to send to multiple recipients in one request. Use either the recipient or recipients parameter, but not both.",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Recipient"
+          }
+        },
+        "subscriptions":{
+          "$ref": "#/definitions/RequestSendSMSToMultipleRecipientsSubscriptions"
+        },
+        "content":{
+          "$ref": "#/definitions/RequestSendSMSContent"
+        },
+        "attributes":{
+          "$ref": "#/definitions/Attributes"
+        }
+      }
+    },
+    "Attributes":{
+      "type": "object"
+    },
+    "RequestSendSMSToMultipleRecipientsSubscriptions":{
+      "type": "object",
+      "properties": {
+        "resubscribe":{
+          "description": "Forces the message send request to subscribe the mobile number back into a short code if a user may have requested STOP. Often used to ensure that critical transactional messages are delivered irrespective of a mobile number subscriber status.",
+          "type": "boolean"
+        }
+      }
+    },
+    "RequestSendSMSContent":{
+      "type": "object",
+      "properties": {
+        "message": {
+          "description": "Override for message content in the definition that you want sent with each message. Use substitution strings to personalize the content.",
+          "type": "string"
+        }
+      }
+    },
+    "RequestSendSMSToSingleRecipient":{
+      "type": "object",
+      "required": [
+        "definitionKey",
+        "recipient"
+      ],
+      "properties": {
+        "definitionKey": {
+          "description": "Unique identifier of the definition.",
+          "type": "string"
+        },
+        "recipient": {
+          "$ref": "#/definitions/Recipient"
+        },
+        "content":{
+          "$ref": "#/definitions/RequestSendSMSContent"
         }
       }
     }
