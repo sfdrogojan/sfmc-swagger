@@ -1,3 +1,6 @@
 build-artifacts/
 
 .vs/
+
+cli/client-generator-linux-x64
+cli/client-generator-win-x64
