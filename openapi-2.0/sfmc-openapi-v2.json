@@ -549,19 +549,19 @@
       "type": "object",
       "description": "The asset type",
       "required": [
-        "Id",
-        "Name"
+        "id",
+        "name"
       ],
       "properties": {
-        "Id": {
+        "id": {
           "description": "The id of the asset type",
           "type": "number"
         },
-        "Name": {
+        "name": {
           "description": "The name of the asset type",
           "type": "string"
         },
-        "DisplayName": {
+        "displayName": {
           "description": "The description of the asset type",
           "type": "string"
         }
