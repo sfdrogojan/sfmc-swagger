@@ -51,7 +51,6 @@
             }
           }
         },
-        "x-published": true,
         "operationId": "getAssetById"
       },
       "patch": {
@@ -97,7 +96,6 @@
             }
           }
         },
-        "x-published": true,
         "operationId": "partiallyUpdateAssetById"
       },
       "delete": {
@@ -129,7 +127,6 @@
             }
           }
         },
-        "x-published": true,
         "operationId": "deleteAssetById"
       }
     },
@@ -170,7 +167,6 @@
             }
           }
         },
-        "x-published": true,
         "operationId": "createAsset"
       }
     },
@@ -199,8 +195,6 @@
             }
           }
         },
-        "x-md-detail": "createCampaign.htm",
-        "x-published": true,
         "operationId": "createCampaign"
       }
     },
@@ -228,8 +222,6 @@
             }
           }
         },
-        "x-md-detail": "getCampaign.htm",
-        "x-published": true,
         "operationId": "getCampaignById"
       },
       "delete": {
@@ -261,8 +253,6 @@
             }
           }
         },
-        "x-md-detail": "deleteCampaign.htm",
-        "x-published": true,
         "operationId": "deleteCampaignById"
       }
     },
@@ -315,8 +305,6 @@
             }
           }
         },
-        "x-md-detail": "createEmailDefinition.htm",
-        "x-published": true,
         "operationId": "createEmailDefinition"
       },
       "get": {
@@ -393,8 +381,6 @@
             }
           }
         },
-        "x-md-detail": "getEmailDefinitions.htm",
-        "x-published": true,
         "operationId": "getEmailDefinitions"
       }
     },
@@ -446,8 +432,6 @@
             }
           }
         },
-        "x-md-detail": "deleteEmailDefinition.htm",
-        "x-published": true,
         "operationId": "deleteEmailDefinition"
       },
       "patch": {
@@ -499,7 +483,6 @@
             }
           }
         },
-        "x-published": true,
         "operationId": "partiallyUpdateEmailDefinition"
       },
       "get": {
@@ -549,8 +532,6 @@
             }
           }
         },
-        "x-md-detail": "getEmailDefinition.htm",
-        "x-published": true,
         "operationId": "getEmailDefinition"
       }
     },
@@ -590,8 +571,6 @@
             }
           }
         },
-        "x-md-detail": "getQueueMetricsForEmailDefinition.htm",
-        "x-published": true,
         "operationId": "getQueueMetricsForEmailDefinition"
       },
       "delete": {
@@ -629,7 +608,6 @@
             }
           }
         },
-        "x-published": true,
         "operationId": "deleteQueuedMessagesForEmailDefinition"
       }
     },
@@ -676,8 +654,6 @@
             }
           }
         },
-        "x-md-detail": "sendEmailToMultipleRecipients.htm",
-        "x-published": true,
         "operationId": "sendEmailToMultipleRecipients"
       },
       "get": {
@@ -735,8 +711,6 @@
             }
           }
         },
-        "x-md-detail": "getEmailsNotSentToRecipients.htm",
-        "x-published": true,
         "operationId": "getEmailsNotSentToRecipients"
       }
     },
@@ -782,8 +756,6 @@
             }
           }
         },
-        "x-md-detail": "getEmailSendStatusForRecipient.htm",
-        "x-published": true,
         "operationId": "getEmailSendStatusForRecipient"
       },
       "post": {
@@ -841,8 +813,6 @@
             }
           }
         },
-        "x-md-detail": "sendEmailToSingleRecipient.htm",
-        "x-published": true,
         "operationId": "sendEmailToSingleRecipient"
       }
     },
@@ -851,7 +821,7 @@
         "tags": [
           "transactionalMessaging"
         ],
-        "summary": "getSMSDefinition",
+        "summary": "getSmsDefinition",
         "description": "Gets SMS definition configuration details for a definition key.",
         "parameters": [
           {
@@ -866,7 +836,7 @@
           "200": {
             "description": "Definition of SMS successfully retrieved",
             "schema": {
-              "$ref": "#/definitions/RequestCreateSMSDefinition"
+              "$ref": "#/definitions/RequestCreateSmsDefinition"
             }
           },
           "400": {
@@ -894,15 +864,13 @@
             }
           }
         },
-        "x-md-detail": "getSMSDefinition.htm",
-        "x-published": true,
-        "operationId": "getSMSDefinition"
+        "operationId": "getSmsDefinition"
       },
       "patch": {
         "tags": [
           "transactionalMessaging"
         ],
-        "summary": "partiallyUpdateSMSDefinition",
+        "summary": "partiallyUpdateSmsDefinition",
         "description": "Updates a specific SMS definition.",
         "parameters": [
           {
@@ -917,7 +885,7 @@
             "in": "body",
             "description": "JSON Parameters",
             "schema": {
-              "$ref": "#/definitions/RequestCreateSMSDefinition"
+              "$ref": "#/definitions/RequestUpdateSmsDefinition"
             }
           }
         ],
@@ -925,7 +893,7 @@
           "200": {
             "description": "A single definition for an SMS",
             "schema": {
-              "$ref": "#/definitions/RequestCreateSMSDefinition"
+              "$ref": "#/definitions/RequestCreateSmsDefinition"
             }
           },
           "400": {
@@ -947,14 +915,13 @@
             }
           }
         },
-        "x-published": true,
-        "operationId": "partiallyUpdateSMSDefinition"
+        "operationId": "partiallyUpdateSmsDefinition"
       },
       "delete": {
         "tags": [
           "transactionalMessaging"
         ],
-        "summary": "deleteSMSDefinition",
+        "summary": "deleteSmsDefinition",
         "description": "Deletes an sms definition. You can't restore a deleted definition. The deleted definition is archived, and a delete location of the definition key is provided in the response for reference. You can reuse a deleted definition key because the information associated with it is copied to a new unique identifier.",
         "parameters": [
           {
@@ -997,9 +964,7 @@
             }
           }
         },
-        "x-md-detail": "deleteSMSDefinition.htm",
-        "x-published": true,
-        "operationId": "deleteSMSDefinition"
+        "operationId": "deleteSmsDefinition"
       }
     },
     "/messaging/v1/sms/definitions":{
@@ -1007,7 +972,7 @@
         "tags": [
           "transactionalMessaging"
         ],
-        "summary": "createSMSDefinition",
+        "summary": "createSmsDefinition",
         "description": "Creates the definition for an SMS.",
         "parameters": [
           {
@@ -1015,7 +980,7 @@
             "in": "body",
             "description": "JSON Parameters",
             "schema": {
-              "$ref": "#/definitions/RequestCreateSMSDefinition"
+              "$ref": "#/definitions/RequestCreateSmsDefinition"
             }
           }
         ],
@@ -1023,7 +988,7 @@
           "201": {
             "description": "A single definition for an sms",
             "schema": {
-              "$ref": "#/definitions/RequestCreateSMSDefinition"
+              "$ref": "#/definitions/RequestCreateSmsDefinition"
             }
           },
           "400": {
@@ -1051,15 +1016,13 @@
             }
           }
         },
-        "x-md-detail": "createSMSDefinition.htm",
-        "x-published": true,
-        "operationId": "createSMSDefinition"
+        "operationId": "createSmsDefinition"
       },
       "get": {
         "tags": [
           "transactionalMessaging"
         ],
-        "summary": "getSMSDefinitions",
+        "summary": "getSmsDefinitions",
         "description": "Gets a list of SMS definitions.",
         "parameters": [
           {
@@ -1107,7 +1070,7 @@
           "200": {
             "description": "SMS definitions successfully retrieved",
             "schema": {
-              "$ref": "#/definitions/ResponseGetSMSDefinitions"
+              "$ref": "#/definitions/ResponseGetSmsDefinitions"
             }
           },
           "400": {
@@ -1129,9 +1092,7 @@
             }
           }
         },
-        "x-md-detail": "getSMSDefinitions.htm",
-        "x-published": true,
-        "operationId": "getSMSDefinitions"
+        "operationId": "getSmsDefinitions"
       }
     },
     "/messaging/v1/sms/definitions/{definitionKey}/queue":{
@@ -1139,7 +1100,7 @@
         "tags": [
           "transactionalMessaging"
         ],
-        "summary": "getQueueMetricsForSMSDefinition",
+        "summary": "getQueueMetricsForSmsDefinition",
         "description": "Gets metrics for the messages of a SMS definition. Applies to messages that are accepted but not yet processed.",
         "parameters": [
           {
@@ -1170,15 +1131,13 @@
             }
           }
         },
-        "x-md-detail": "getQueueMetricsForSMSDefinition.htm",
-        "x-published": true,
-        "operationId": "getQueueMetricsForSMSDefinition"
+        "operationId": "getQueueMetricsForSmsDefinition"
       },
       "delete": {
         "tags": [
           "transactionalMessaging"
         ],
-        "summary": "deleteQueuedMessagesForSMSDefinition",
+        "summary": "deleteQueuedMessagesForSmsDefinition",
         "description": "Deletes the queue for a SMS definition. The SMS definition must be in inactive status.",
         "parameters": [
           {
@@ -1209,8 +1168,7 @@
             }
           }
         },
-        "x-published": true,
-        "operationId": "deleteQueuedMessagesForSMSDefinition"
+        "operationId": "deleteQueuedMessagesForSmsDefinition"
       }
     },
     "/messaging/v1/sms/messages/":{
@@ -1218,7 +1176,7 @@
         "tags": [
           "transactionalMessaging"
         ],
-        "summary": "sendSMSToMultipleRecipients",
+        "summary": "sendSmsToMultipleRecipients",
         "description": "Sends a message to multiple recipients using an email definition. You can provide a messageKey in the request; otherwise, the messageKey is automatically generated in the response.",
         "parameters": [
           {
@@ -1226,7 +1184,7 @@
             "in": "body",
             "description": "JSON Parameters",
             "schema": {
-              "$ref": "#/definitions/RequestSendSMSToMultipleRecipients"
+              "$ref": "#/definitions/RequestSendSmsToMultipleRecipients"
             }
           }
         ],
@@ -1256,9 +1214,7 @@
             }
           }
         },
-        "x-md-detail": "sendSMSToMultipleRecipients.htm",
-        "x-published": true,
-        "operationId": "sendSMSToMultipleRecipients"
+        "operationId": "sendSmsToMultipleRecipients"
       },
       "get": {
         "tags": [
@@ -1315,8 +1271,6 @@
             }
           }
         },
-        "x-md-detail": "getSMSsNotSentToRecipients.htm",
-        "x-published": true,
         "operationId": "getSMSsNotSentToRecipients"
       }
     },
@@ -1325,7 +1279,7 @@
         "tags": [
           "transactionalMessaging"
         ],
-        "summary": "sendSMSToSingleRecipient",
+        "summary": "sendSmsToSingleRecipient",
         "description": "Sends a message to a single recipient via a SMS definition using a messageKey path parameter.",
         "parameters": [
           {
@@ -1340,7 +1294,7 @@
             "in": "body",
             "description": "JSON Parameters",
             "schema": {
-              "$ref": "#/definitions/RequestSendSMSToSingleRecipient"
+              "$ref": "#/definitions/RequestSendSmsToSingleRecipient"
             }
           }
         ],
@@ -1376,15 +1330,13 @@
             }
           }
         },
-        "x-md-detail": "sendSMSToSingleRecipient.htm",
-        "x-published": true,
-        "operationId": "sendSMSToSingleRecipient"
+        "operationId": "sendSmsToSingleRecipient"
       },
       "get": {
         "tags": [
           "transactionalMessaging"
         ],
-        "summary": "getSMSSendStatusForRecipient",
+        "summary": "getSmsSendStatusForRecipient",
         "description": "Gets the send status for a message. Because this route is rate-limited, use it for infrequent verification of a messageKey. To collect send status at scale, subscribe to transactional send events using the Event Notification Service.",
         "parameters": [
           {
@@ -1421,9 +1373,7 @@
             }
           }
         },
-        "x-md-detail": "getSMSSendStatusForRecipient.htm",
-        "x-published": true,
-        "operationId": "getSMSSendStatusForRecipient"
+        "operationId": "getSmsSendStatusForRecipient"
       }
     }
   },
@@ -1707,6 +1657,59 @@
         }
       }
     },
+    "RequestUpdateEmailDefinition":{
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Name of the definition. Must be unique.",
+          "type": "string"
+        },
+        "content": {
+          "$ref": "#/definitions/RequestCreateEmailDefinitionContent"
+        },
+        "status": {
+          "description": "Operational state of the definition: active, inactive, or deleted. A message sent to an active definition is processed and delivered. A message sent to an inactive definition isn’t processed or delivered. Instead, the message is queued for later processing for up to three days.",
+          "type": "string"
+        },
+        "description": {
+          "description": "User-provided description of the email definition.",
+          "type": "string"
+        },
+        "classification": {
+          "description": "Marketing Cloud external key of a sending classification defined in Email Studio Administration. Only transactional classifications are permitted. Default is default transactional.",
+          "type": "string"
+        },
+        "subscriptions": {
+          "$ref": "#/definitions/RequestCreateEmailDefinitionSubscriptions"
+        },
+        "options": {
+          "$ref": "#/definitions/RequestCreateEmailDefinitionOptions"
+        }
+      }
+    },
+    "RequestUpdateSmsDefinition":{
+      "type": "object",
+      "properties": {
+        "name": {
+          "description": "Name of the definition. Must be unique.",
+          "type": "string"
+        },
+        "content": {
+          "$ref": "#/definitions/RequestCreateSmsDefinitionContent"
+        },
+        "status": {
+          "description": "Operational state of the definition: active, inactive, or deleted. A message sent to an active definition is processed and delivered. A message sent to an inactive definition isn’t processed or delivered. Instead, the message is queued for later processing for up to three days.",
+          "type": "string"
+        },
+        "description":{
+          "description": "User-provided description of the SMS definition.",
+          "type": "string"
+        },
+        "subscriptions": {
+          "$ref": "#/definitions/RequestCreateSmsDefinitionSubscriptions"
+        }
+      }
+    },
     "ResponseGetEmailDefinitions": {
       "type": "object",
       "properties": {
@@ -1793,15 +1796,6 @@
         },
         "deletedDefinitionKey": {
           "description": "The key of the deleted definition",
-          "type": "string"
-        }
-      }
-    },
-    "RequestUpdateEmailDefinition": {
-      "type": "object",
-      "properties": {
-        "description": {
-          "description": "User-provided description of the email definition.",
           "type": "string"
         }
       }
@@ -2106,7 +2100,7 @@
         }
       }
     },
-    "RequestCreateSMSDefinition":{
+    "RequestCreateSmsDefinition":{
       "type": "object",
       "required": [
         "definitionKey",
@@ -2124,7 +2118,7 @@
           "type": "string"
         },
         "content": {
-          "$ref": "#/definitions/RequestCreateSMSDefinitionContent"
+          "$ref": "#/definitions/RequestCreateSmsDefinitionContent"
         },
         "status": {
           "description": "Operational state of the definition: active, inactive, or deleted. A message sent to an active definition is processed and delivered. A message sent to an inactive definition isn’t processed or delivered. Instead, the message is queued for later processing for up to three days.",
@@ -2147,7 +2141,7 @@
           "type": "string"
         },
         "subscriptions": {
-          "$ref": "#/definitions/RequestCreateSMSDefinitionSubscriptions"
+          "$ref": "#/definitions/RequestCreateSmsDefinitionSubscriptions"
         },
         "requestId": {
           "description": "The ID of the request",
@@ -2156,7 +2150,7 @@
         }
       }
     },
-    "RequestCreateSMSDefinitionContent":{
+    "RequestCreateSmsDefinitionContent":{
       "type": "object",
       "required": [
         "message"
@@ -2168,7 +2162,7 @@
         }
       }
     },
-    "RequestCreateSMSDefinitionSubscriptions":{
+    "RequestCreateSmsDefinitionSubscriptions":{
       "type": "object",
       "required": [
         "shortCode",
@@ -2194,7 +2188,7 @@
         }
       }
     },
-    "ResponseGetSMSDefinitions":{
+    "ResponseGetSmsDefinitions":{
       "type": "object",
       "properties": {
         "requestId": {
@@ -2204,7 +2198,7 @@
         "definitions": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/RequestCreateSMSDefinition"
+            "$ref": "#/definitions/RequestCreateSmsDefinition"
           }
         },
         "count": {
@@ -2221,7 +2215,7 @@
         }
       }
     },
-    "RequestSendSMSToMultipleRecipients":{
+    "RequestSendSmsToMultipleRecipients":{
       "type": "object",
       "required": [
         "definitionKey",
@@ -2240,10 +2234,10 @@
           }
         },
         "subscriptions":{
-          "$ref": "#/definitions/RequestSendSMSToMultipleRecipientsSubscriptions"
+          "$ref": "#/definitions/RequestSendSmsToMultipleRecipientsSubscriptions"
         },
         "content":{
-          "$ref": "#/definitions/RequestSendSMSContent"
+          "$ref": "#/definitions/RequestSendSmsContent"
         },
         "attributes":{
           "$ref": "#/definitions/Attributes"
@@ -2253,7 +2247,7 @@
     "Attributes":{
       "type": "object"
     },
-    "RequestSendSMSToMultipleRecipientsSubscriptions":{
+    "RequestSendSmsToMultipleRecipientsSubscriptions":{
       "type": "object",
       "properties": {
         "resubscribe":{
@@ -2262,7 +2256,7 @@
         }
       }
     },
-    "RequestSendSMSContent":{
+    "RequestSendSmsContent":{
       "type": "object",
       "properties": {
         "message": {
@@ -2271,7 +2265,7 @@
         }
       }
     },
-    "RequestSendSMSToSingleRecipient":{
+    "RequestSendSmsToSingleRecipient":{
       "type": "object",
       "required": [
         "definitionKey",
@@ -2286,7 +2280,7 @@
           "$ref": "#/definitions/Recipient"
         },
         "content":{
-          "$ref": "#/definitions/RequestSendSMSContent"
+          "$ref": "#/definitions/RequestSendSmsContent"
         }
       }
     }
