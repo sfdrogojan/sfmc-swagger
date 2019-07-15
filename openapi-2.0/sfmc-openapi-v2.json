@@ -269,7 +269,7 @@
             "in": "body",
             "description": "JSON Parameters",
             "schema": {
-              "$ref": "#/definitions/RequestCreateEmailDefinition"
+              "$ref": "#/definitions/CreateEmailDefinitionRequest"
             }
           }
         ],
@@ -277,7 +277,7 @@
           "201": {
             "description": "A single definition for an email",
             "schema": {
-              "$ref": "#/definitions/RequestCreateEmailDefinition"
+              "$ref": "#/definitions/CreateEmailDefinitionRequest"
             }
           },
           "400": {
@@ -359,7 +359,7 @@
           "200": {
             "description": "Email definitions successfully retrieved",
             "schema": {
-              "$ref": "#/definitions/ResponseGetEmailDefinitions"
+              "$ref": "#/definitions/GetEmailDefinitionsResponse"
             }
           },
           "400": {
@@ -404,7 +404,7 @@
           "200": {
             "description": "Definition of email successfully deleted",
             "schema": {
-              "$ref": "#/definitions/ResponseDeleteSendDefinition"
+              "$ref": "#/definitions/DeleteSendDefinitionResponse"
             }
           },
           "400": {
@@ -453,7 +453,7 @@
             "in": "body",
             "description": "JSON Parameters",
             "schema": {
-              "$ref": "#/definitions/RequestUpdateEmailDefinition"
+              "$ref": "#/definitions/UpdateEmailDefinitionRequest"
             }
           }
         ],
@@ -461,7 +461,7 @@
           "200": {
             "description": "A single definition for an email",
             "schema": {
-              "$ref": "#/definitions/RequestCreateEmailDefinition"
+              "$ref": "#/definitions/CreateEmailDefinitionRequest"
             }
           },
           "400": {
@@ -504,7 +504,7 @@
           "200": {
             "description": "Definition of email successfully retrieved",
             "schema": {
-              "$ref": "#/definitions/RequestCreateEmailDefinition"
+              "$ref": "#/definitions/CreateEmailDefinitionRequest"
             }
           },
           "400": {
@@ -555,7 +555,7 @@
           "200": {
             "description": "Metrics for the messages of an email definition",
             "schema": {
-              "$ref": "#/definitions/ResponseGetQueueMetricsForSendDefinition"
+              "$ref": "#/definitions/GetQueueMetricsForSendDefinitionResponse"
             }
           },
           "400": {
@@ -592,7 +592,7 @@
           "200": {
             "description": "Queue for email defintion successfully deleted",
             "schema": {
-              "$ref": "#/definitions/ResponseDeleteQueuedMessagesForSendDefinition"
+              "$ref": "#/definitions/DeleteQueuedMessagesForSendDefinitionResponse"
             }
           },
           "400": {
@@ -624,7 +624,7 @@
             "in": "body",
             "description": "JSON Parameters",
             "schema": {
-              "$ref": "#/definitions/RequestSendEmailToMultipleRecipients"
+              "$ref": "#/definitions/SendEmailToMultipleRecipientsRequest"
             }
           }
         ],
@@ -632,7 +632,7 @@
           "202": {
             "description": "Accepted",
             "schema": {
-              "$ref": "#/definitions/ResponseSendDefinitionToMultipleRecipients"
+              "$ref": "#/definitions/SendDefinitionToMultipleRecipientsResponse"
             }
           },
           "400": {
@@ -689,7 +689,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/ResponseGetDefinitionsNotSentToRecipients"
+              "$ref": "#/definitions/GetDefinitionsNotSentToRecipientsResponse"
             }
           },
           "400": {
@@ -734,7 +734,7 @@
           "200": {
             "description": "Email send status for recipient succesfully retrieved.",
             "schema": {
-              "$ref": "#/definitions/ResponseGetDefinitionSendStatusForRecipient"
+              "$ref": "#/definitions/GetDefinitionSendStatusForRecipientResponse"
             }
           },
           "400": {
@@ -777,7 +777,7 @@
             "in": "body",
             "description": "JSON Parameters",
             "schema": {
-              "$ref": "#/definitions/RequestSendEmailToSingleRecipient"
+              "$ref": "#/definitions/SendEmailToSingleRecipientRequest"
             }
           }
         ],
@@ -785,7 +785,7 @@
           "202": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/ResponseSendDefinitionToSingleRecipient"
+              "$ref": "#/definitions/SendDefinitionToSingleRecipientResponse"
             }
           },
           "400": {
@@ -836,7 +836,7 @@
           "200": {
             "description": "Definition of SMS successfully retrieved",
             "schema": {
-              "$ref": "#/definitions/RequestCreateSmsDefinition"
+              "$ref": "#/definitions/CreateSmsDefinitionRequest"
             }
           },
           "400": {
@@ -885,7 +885,7 @@
             "in": "body",
             "description": "JSON Parameters",
             "schema": {
-              "$ref": "#/definitions/RequestUpdateSmsDefinition"
+              "$ref": "#/definitions/UpdateSmsDefinitionRequest"
             }
           }
         ],
@@ -893,7 +893,7 @@
           "200": {
             "description": "A single definition for an SMS",
             "schema": {
-              "$ref": "#/definitions/RequestCreateSmsDefinition"
+              "$ref": "#/definitions/CreateSmsDefinitionRequest"
             }
           },
           "400": {
@@ -936,7 +936,7 @@
           "200": {
             "description": "Definition of SMS successfully deleted",
             "schema": {
-              "$ref": "#/definitions/ResponseDeleteSendDefinition"
+              "$ref": "#/definitions/DeleteSendDefinitionResponse"
             }
           },
           "400": {
@@ -980,7 +980,7 @@
             "in": "body",
             "description": "JSON Parameters",
             "schema": {
-              "$ref": "#/definitions/RequestCreateSmsDefinition"
+              "$ref": "#/definitions/CreateSmsDefinitionRequest"
             }
           }
         ],
@@ -988,7 +988,7 @@
           "201": {
             "description": "A single definition for an sms",
             "schema": {
-              "$ref": "#/definitions/RequestCreateSmsDefinition"
+              "$ref": "#/definitions/CreateSmsDefinitionRequest"
             }
           },
           "400": {
@@ -1070,7 +1070,7 @@
           "200": {
             "description": "SMS definitions successfully retrieved",
             "schema": {
-              "$ref": "#/definitions/ResponseGetSmsDefinitions"
+              "$ref": "#/definitions/GetSmsDefinitionsResponse"
             }
           },
           "400": {
@@ -1115,7 +1115,7 @@
           "200": {
             "description": "Metrics for the messages of an SMS definition",
             "schema": {
-              "$ref": "#/definitions/ResponseGetQueueMetricsForSendDefinition"
+              "$ref": "#/definitions/GetQueueMetricsForSendDefinitionResponse"
             }
           },
           "400": {
@@ -1152,7 +1152,7 @@
           "200": {
             "description": "Queue for SMS defintion successfully deleted",
             "schema": {
-              "$ref": "#/definitions/ResponseDeleteQueuedMessagesForSendDefinition"
+              "$ref": "#/definitions/DeleteQueuedMessagesForSendDefinitionResponse"
             }
           },
           "400": {
@@ -1184,7 +1184,7 @@
             "in": "body",
             "description": "JSON Parameters",
             "schema": {
-              "$ref": "#/definitions/RequestSendSmsToMultipleRecipients"
+              "$ref": "#/definitions/SendSmsToMultipleRecipientsRequest"
             }
           }
         ],
@@ -1192,7 +1192,7 @@
           "202": {
             "description": "Accepted",
             "schema": {
-              "$ref": "#/definitions/ResponseSendDefinitionToMultipleRecipients"
+              "$ref": "#/definitions/SendDefinitionToMultipleRecipientsResponse"
             }
           },
           "400": {
@@ -1249,7 +1249,7 @@
           "200": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/ResponseGetDefinitionsNotSentToRecipients"
+              "$ref": "#/definitions/GetDefinitionsNotSentToRecipientsResponse"
             }
           },
           "400": {
@@ -1294,7 +1294,7 @@
             "in": "body",
             "description": "JSON Parameters",
             "schema": {
-              "$ref": "#/definitions/RequestSendSmsToSingleRecipient"
+              "$ref": "#/definitions/SendSmsToSingleRecipientRequest"
             }
           }
         ],
@@ -1302,7 +1302,7 @@
           "202": {
             "description": "",
             "schema": {
-              "$ref": "#/definitions/ResponseSendDefinitionToSingleRecipient"
+              "$ref": "#/definitions/SendDefinitionToSingleRecipientResponse"
             }
           },
           "400": {
@@ -1351,7 +1351,7 @@
           "200": {
             "description": "SMS send status for recipient succesfully retrieved.",
             "schema": {
-              "$ref": "#/definitions/ResponseGetDefinitionSendStatusForRecipient"
+              "$ref": "#/definitions/GetDefinitionSendStatusForRecipientResponse"
             }
           },
           "400": {
@@ -1596,7 +1596,7 @@
         }
       }
     },
-    "RequestCreateEmailDefinition": {
+    "CreateEmailDefinitionRequest": {
       "type": "object",
       "required": [
         "definitionKey",
@@ -1647,17 +1647,17 @@
           "readOnly": true
         },
         "content": {
-          "$ref": "#/definitions/RequestCreateEmailDefinitionContent"
+          "$ref": "#/definitions/CreateEmailDefinitionContent"
         },
         "subscriptions": {
-          "$ref": "#/definitions/RequestCreateEmailDefinitionSubscriptions"
+          "$ref": "#/definitions/CreateEmailDefinitionSubscriptions"
         },
         "options": {
-          "$ref": "#/definitions/RequestCreateEmailDefinitionOptions"
+          "$ref": "#/definitions/CreateEmailDefinitionOptionsRequest"
         }
       }
     },
-    "RequestUpdateEmailDefinition":{
+    "UpdateEmailDefinitionRequest":{
       "type": "object",
       "properties": {
         "name": {
@@ -1665,7 +1665,7 @@
           "type": "string"
         },
         "content": {
-          "$ref": "#/definitions/RequestCreateEmailDefinitionContent"
+          "$ref": "#/definitions/CreateEmailDefinitionContent"
         },
         "status": {
           "description": "Operational state of the definition: active, inactive, or deleted. A message sent to an active definition is processed and delivered. A message sent to an inactive definition isn’t processed or delivered. Instead, the message is queued for later processing for up to three days.",
@@ -1680,14 +1680,14 @@
           "type": "string"
         },
         "subscriptions": {
-          "$ref": "#/definitions/RequestCreateEmailDefinitionSubscriptions"
+          "$ref": "#/definitions/CreateEmailDefinitionSubscriptions"
         },
         "options": {
-          "$ref": "#/definitions/RequestCreateEmailDefinitionOptions"
+          "$ref": "#/definitions/CreateEmailDefinitionOptionsRequest"
         }
       }
     },
-    "RequestUpdateSmsDefinition":{
+    "UpdateSmsDefinitionRequest":{
       "type": "object",
       "properties": {
         "name": {
@@ -1695,7 +1695,7 @@
           "type": "string"
         },
         "content": {
-          "$ref": "#/definitions/RequestCreateSmsDefinitionContent"
+          "$ref": "#/definitions/CreateSmsDefinitionContent"
         },
         "status": {
           "description": "Operational state of the definition: active, inactive, or deleted. A message sent to an active definition is processed and delivered. A message sent to an inactive definition isn’t processed or delivered. Instead, the message is queued for later processing for up to three days.",
@@ -1706,11 +1706,11 @@
           "type": "string"
         },
         "subscriptions": {
-          "$ref": "#/definitions/RequestCreateSmsDefinitionSubscriptions"
+          "$ref": "#/definitions/CreateSmsDefinitionSubscriptions"
         }
       }
     },
-    "ResponseGetEmailDefinitions": {
+    "GetEmailDefinitionsResponse": {
       "type": "object",
       "properties": {
         "requestId": {
@@ -1720,7 +1720,7 @@
         "definitions": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/RequestCreateEmailDefinition"
+            "$ref": "#/definitions/CreateEmailDefinitionRequest"
           }
         },
         "count": {
@@ -1737,7 +1737,7 @@
         }
       }
     },
-    "RequestCreateEmailDefinitionContent": {
+    "CreateEmailDefinitionContent": {
       "type": "object",
       "required": [
         "customerKey"
@@ -1749,7 +1749,7 @@
         }
       }
     },
-    "RequestCreateEmailDefinitionSubscriptions": {
+    "CreateEmailDefinitionSubscriptions": {
       "type": "object",
       "required": [
         "list"
@@ -1774,7 +1774,7 @@
         }
       }
     },
-    "RequestCreateEmailDefinitionOptions": {
+    "CreateEmailDefinitionOptionsRequest": {
       "type": "object",
       "properties": {
         "trackLinks": {
@@ -1783,7 +1783,7 @@
         }
       }
     },
-    "ResponseDeleteSendDefinition": {
+    "DeleteSendDefinitionResponse": {
       "type": "object",
       "properties": {
         "message": {
@@ -1822,7 +1822,7 @@
         }
       }
     },
-    "ResponseGetQueueMetricsForSendDefinition": {
+    "GetQueueMetricsForSendDefinitionResponse": {
       "type": "object",
       "properties": {
         "requestId": {
@@ -1839,7 +1839,7 @@
         }
       }
     },
-    "ResponseDeleteQueuedMessagesForSendDefinition": {
+    "DeleteQueuedMessagesForSendDefinitionResponse": {
       "type": "object",
       "properties": {
         "requestId": {
@@ -1848,7 +1848,7 @@
         }
       }
     },
-    "RequestSendEmailToMultipleRecipients": {
+    "SendEmailToMultipleRecipientsRequest": {
       "type": "object",
       "required": [
         "definitionKey",
@@ -1871,7 +1871,7 @@
         }
       }
     },
-    "ResponseSendDefinitionToMultipleRecipients": {
+    "SendDefinitionToMultipleRecipientsResponse": {
       "type": "object",
       "properties": {
         "requestId": {
@@ -1890,7 +1890,7 @@
           "description": "",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/ResponseSendDefinitionInnerResponse"
+            "$ref": "#/definitions/SendDefinitionResponseItem"
           }
         }
       }
@@ -1918,7 +1918,7 @@
         }
       }
     },
-    "ResponseSendDefinitionInnerResponse": {
+    "SendDefinitionResponseItem": {
       "type": "object",
       "properties": {
         "messageKey": {
@@ -1935,7 +1935,7 @@
         }
       }
     },
-    "ResponseGetDefinitionSendStatusForRecipient": {
+    "GetDefinitionSendStatusForRecipientResponse": {
       "type": "object",
       "properties": {
         "requestId": {
@@ -1956,11 +1956,11 @@
           "type": "string"
         },
         "info": {
-          "$ref": "#/definitions/ResponseGetDefinitionSendStatusForRecipientInfo"
+          "$ref": "#/definitions/GetDefinitionSendStatusForRecipientResponseInfo"
         }
       }
     },
-    "ResponseGetDefinitionSendStatusForRecipientInfo": {
+    "GetDefinitionSendStatusForRecipientResponseInfo": {
       "type": "object",
       "properties": {
         "messageKey": {
@@ -1985,7 +1985,7 @@
         }
       }
     },
-    "ResponseGetDefinitionsNotSentToRecipients": {
+    "GetDefinitionsNotSentToRecipientsResponse": {
       "type": "object",
       "properties": {
         "lastEventID": {
@@ -1996,7 +1996,7 @@
           "description": "",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/ResponseGetDefinitionsNotSentToRecipientsMessage"
+            "$ref": "#/definitions/GetDefinitionsNotSentToRecipientsMessage"
           }
         },
         "count": {
@@ -2014,7 +2014,7 @@
         }
       }
     },
-    "ResponseGetDefinitionsNotSentToRecipientsMessage": {
+    "GetDefinitionsNotSentToRecipientsMessage": {
       "type": "object",
       "properties": {
         "statusCode": {
@@ -2043,11 +2043,11 @@
           "type": "number"
         },
         "info": {
-          "$ref": "#/definitions/ResponseGetDefinitionsNotSentToRecipientsMessageInfo"
+          "$ref": "#/definitions/GetDefinitionsNotSentToRecipientsMessageInfo"
         }
       }
     },
-    "ResponseGetDefinitionsNotSentToRecipientsMessageInfo": {
+    "GetDefinitionsNotSentToRecipientsMessageInfo": {
       "type": "object",
       "properties": {
         "messageKey": {
@@ -2064,7 +2064,7 @@
         }
       }
     },
-    "RequestSendEmailToSingleRecipient":{
+    "SendEmailToSingleRecipientRequest":{
       "type": "object",
       "required": [
         "definitionKey",
@@ -2080,7 +2080,7 @@
         }
       }
     },
-    "ResponseSendDefinitionToSingleRecipient":{
+    "SendDefinitionToSingleRecipientResponse":{
       "type": "object",
       "properties": {
         "requestId": {
@@ -2095,12 +2095,12 @@
           "description": "",
           "type": "array",
           "items": {
-            "$ref": "#/definitions/ResponseSendDefinitionInnerResponse"
+            "$ref": "#/definitions/SendDefinitionResponseItem"
           }
         }
       }
     },
-    "RequestCreateSmsDefinition":{
+    "CreateSmsDefinitionRequest":{
       "type": "object",
       "required": [
         "definitionKey",
@@ -2118,7 +2118,7 @@
           "type": "string"
         },
         "content": {
-          "$ref": "#/definitions/RequestCreateSmsDefinitionContent"
+          "$ref": "#/definitions/CreateSmsDefinitionContent"
         },
         "status": {
           "description": "Operational state of the definition: active, inactive, or deleted. A message sent to an active definition is processed and delivered. A message sent to an inactive definition isn’t processed or delivered. Instead, the message is queued for later processing for up to three days.",
@@ -2141,7 +2141,7 @@
           "type": "string"
         },
         "subscriptions": {
-          "$ref": "#/definitions/RequestCreateSmsDefinitionSubscriptions"
+          "$ref": "#/definitions/CreateSmsDefinitionSubscriptions"
         },
         "requestId": {
           "description": "The ID of the request",
@@ -2150,7 +2150,7 @@
         }
       }
     },
-    "RequestCreateSmsDefinitionContent":{
+    "CreateSmsDefinitionContent":{
       "type": "object",
       "required": [
         "message"
@@ -2162,7 +2162,7 @@
         }
       }
     },
-    "RequestCreateSmsDefinitionSubscriptions":{
+    "CreateSmsDefinitionSubscriptions":{
       "type": "object",
       "required": [
         "shortCode",
@@ -2188,7 +2188,7 @@
         }
       }
     },
-    "ResponseGetSmsDefinitions":{
+    "GetSmsDefinitionsResponse":{
       "type": "object",
       "properties": {
         "requestId": {
@@ -2198,7 +2198,7 @@
         "definitions": {
           "type": "array",
           "items": {
-            "$ref": "#/definitions/RequestCreateSmsDefinition"
+            "$ref": "#/definitions/CreateSmsDefinitionRequest"
           }
         },
         "count": {
@@ -2215,7 +2215,7 @@
         }
       }
     },
-    "RequestSendSmsToMultipleRecipients":{
+    "SendSmsToMultipleRecipientsRequest":{
       "type": "object",
       "required": [
         "definitionKey",
@@ -2234,10 +2234,10 @@
           }
         },
         "subscriptions":{
-          "$ref": "#/definitions/RequestSendSmsToMultipleRecipientsSubscriptions"
+          "$ref": "#/definitions/SendSmsToMultipleRecipientsSubscriptionsRequest"
         },
         "content":{
-          "$ref": "#/definitions/RequestSendSmsContent"
+          "$ref": "#/definitions/SendSmsContentRequest"
         },
         "attributes":{
           "$ref": "#/definitions/Attributes"
@@ -2247,7 +2247,7 @@
     "Attributes":{
       "type": "object"
     },
-    "RequestSendSmsToMultipleRecipientsSubscriptions":{
+    "SendSmsToMultipleRecipientsSubscriptionsRequest":{
       "type": "object",
       "properties": {
         "resubscribe":{
@@ -2256,7 +2256,7 @@
         }
       }
     },
-    "RequestSendSmsContent":{
+    "SendSmsContentRequest":{
       "type": "object",
       "properties": {
         "message": {
@@ -2265,7 +2265,7 @@
         }
       }
     },
-    "RequestSendSmsToSingleRecipient":{
+    "SendSmsToSingleRecipientRequest":{
       "type": "object",
       "required": [
         "definitionKey",
@@ -2280,7 +2280,7 @@
           "$ref": "#/definitions/Recipient"
         },
         "content":{
-          "$ref": "#/definitions/RequestSendSmsContent"
+          "$ref": "#/definitions/SendSmsContentRequest"
         }
       }
     }
