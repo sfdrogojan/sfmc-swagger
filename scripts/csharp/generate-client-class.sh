@@ -1,6 +1,6 @@
 #!/bin/bash
 
-source ./setup-variables.sh
+source ../setup-variables.sh
 
 CLI_ROOT_FOLDER=${SFMC_SWAGGER_ROOT_FOLDER}/cli
 
