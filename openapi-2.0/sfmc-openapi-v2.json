@@ -549,19 +549,19 @@
       "type": "object",
       "description": "The asset type",
       "required": [
-        "Id",
-        "Name"
+        "id",
+        "name"
       ],
       "properties": {
-        "Id": {
+        "id": {
           "description": "The id of the asset type",
           "type": "number"
         },
-        "Name": {
+        "name": {
           "description": "The name of the asset type",
           "type": "string"
         },
-        "DisplayName": {
+        "displayName": {
           "description": "The description of the asset type",
           "type": "string"
         }
@@ -570,125 +570,125 @@
     "Asset": {
       "type": "object",
       "required": [
-        "CustomerKey",
-        "Name",
-        "Description",
-        "AssetType"
+        "customerKey",
+        "name",
+        "description",
+        "assetType"
       ],
       "properties": {
-        "Id": {
+        "id": {
           "description": "The id of the asset",
           "type": "number"
         },
-        "CustomerKey": {
+        "customerKey": {
           "description": "Reference to customer's private ID/name for the asset",
           "type": "string"
         },
-        "ContentType": {
+        "contentType": {
           "description": "The type that the content attribute will be in",
           "type": "string"
         },
-        "Data": {
+        "data": {
           "description": "Property bag containing the asset data",
           "type": "object"
         },
-        "AssetType": {
+        "assetType": {
           "$ref": "#/definitions/AssetType"
         },
-        "Version": {
+        "version": {
           "description": "The version of the asset",
           "type": "number"
         },
-        "Locked": {
+        "locked": {
           "description": "Specifies if the asset can be modified or not",
           "type": "boolean"
         },
-        "FileProperties": {
+        "fileProperties": {
           "description": "Stores the different properties that this asset refers to if it is a file type",
           "type": "object"
         },
-        "Name": {
+        "name": {
           "description": "Name of the asset, set by the client",
           "type": "string"
         },
-        "Description": {
+        "description": {
           "description": "Description of the asset, set by the client",
           "type": "string"
         },
-        "Category": {
+        "category": {
           "description": "ID of the category the asset belongs to",
           "type": "object"
         },
-        "Tags": {
+        "tags": {
           "description": "List of tags associated with the asset",
           "type": "array",
           "items": {
             "type": "string"
           }
         },
-        "Content": {
+        "content": {
           "description": "The actual content of the asset",
           "type": "string"
         },
-        "Design": {
+        "design": {
           "description": "Fallback for display when neither content nor supercontent are provided",
           "type": "string"
         },
-        "SuperContent": {
+        "superContent": {
           "description": "Content that supersedes content in terms of display",
           "type": "string"
         },
-        "CustomFields": {
+        "customFields": {
           "description": "Custom fields within an asset",
           "type": "object"
         },
-        "Views": {
+        "views": {
           "description": "Views within an asset",
           "type": "object"
         },
-        "Blocks": {
+        "blocks": {
           "description": "Blocks within the asset",
           "type": "object"
         },
-        "MinBlocks": {
+        "minBlocks": {
           "description": "Minimum number of blocks within an asset",
           "type": "number"
         },
-        "MaxBlocks": {
+        "maxBlocks": {
           "description": "Maximum number of blocks within an asset",
           "type": "number"
         },
-        "Channels": {
+        "channels": {
           "description": "List of channels that are allowed to use this asset",
           "type": "object"
         },
-        "AllowedBlocks": {
+        "allowedBlocks": {
           "description": "List of blocks that are allowed in the asset",
           "type": "array",
           "items": {
             "type": "string"
           }
         },
-        "Slots": {
+        "slots": {
           "description": "Slots within the asset",
           "type": "object"
         },
-        "BusinessUnitAvailability": {
+        "businessUnitAvailability": {
           "description": "A dictionary of member IDs that have been granted access to the asset",
           "type": "object"
         },
         "sharingProperties": {
           "$ref": "#/definitions/SharingProperties"
         },
-        "Template": {
+        "template": {
           "description": "Template the asset follows",
           "type": "object"
         },
-        "File": {
+        "file": {
           "description": "Base64-encoded string of a file associated with an asset",
           "type": "string"
         },
-        "GenerateFrom": {
+        "generateFrom": {
           "description": "Tells the sending compiler what view to use for generating this view's content",
           "type": "string"
         }
@@ -697,37 +697,37 @@
     "Campaign": {
       "type": "object",
       "required": [
-        "Name",
-        "Description",
-        "CampaignCode",
-        "Color",
-        "Favorite"
+        "name",
+        "description",
+        "campaignCode",
+        "color",
+        "favorite"
       ],
       "properties": {
-        "Name": {
+        "name": {
           "description": "Name of the campaign with a maximum length of 128 characters",
           "type": "string",
           "maxLength": 128
         },
-        "Description": {
+        "description": {
           "description": "Description of the campaign with a maximum length of 512 characters",
           "type": "string",
           "maxLength": 512
         },
-        "CampaignCode": {
+        "campaignCode": {
           "description": "Unique identifier for the campaign with a maximum length of 36 characters",
           "type": "string",
           "maxLength": 36
         },
-        "Color": {
+        "color": {
           "description": "Hex color value",
           "type": "string"
         },
-        "Favorite": {
+        "favorite": {
           "description": "Determines if the campaign will be flagged as a favorite",
           "type": "boolean"
         },
-        "Id": {
+        "id": {
           "description": "The id of the campaign",
           "type": "number"
         },

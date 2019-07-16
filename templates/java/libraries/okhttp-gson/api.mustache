@@ -2,14 +2,8 @@
 
 package {{package}};
 
-import {{invokerPackage}}.ApiCallback;
-import {{invokerPackage}}.ApiClient;
-import {{invokerPackage}}.ApiException;
-import {{invokerPackage}}.ApiResponse;
-import {{invokerPackage}}.Configuration;
-import {{invokerPackage}}.Pair;
-import {{invokerPackage}}.ProgressRequestBody;
-import {{invokerPackage}}.ProgressResponseBody;
+import {{invokerPackage}}.*;
+import {{invokerPackage}}.auth.*;
 {{#performBeanValidation}}
 import {{invokerPackage}}.BeanValidationException;
 {{/performBeanValidation}}
@@ -45,21 +39,15 @@ import java.util.Map;
 {{#operations}}
 public class {{classname}} {
     private ApiClient {{localVariablePrefix}}apiClient;
+    private AuthService authService;
 
-    public {{classname}}() {
-        this(Configuration.getDefaultApiClient());
-    }
+    public {{classname}}(String authBasePath, String clientId, String clientSecret, String accountId, String scope) {
+        ClientConfig clientConfig = new ClientConfig(authBasePath, clientId, clientSecret, accountId, scope);
+        DateTimeProvider dateTimeProvider = new DateTimeProvider();
+        CacheService cacheService = new CacheService(dateTimeProvider);
 
-    public {{classname}}(ApiClient apiClient) {
-        this.{{localVariablePrefix}}apiClient = apiClient;
-    }
-
-    public ApiClient getApiClient() {
-        return {{localVariablePrefix}}apiClient;
-    }
-
-    public void setApiClient(ApiClient apiClient) {
-        this.{{localVariablePrefix}}apiClient = apiClient;
+        this.authService = new AuthService(clientConfig, new ApiClient(), cacheService);
+        this.apiClient = new ApiClient(authService);
     }
 
     {{#operation}}
@@ -125,7 +113,7 @@ public class {{classname}} {
             });
         }
 
-        String[] {{localVariablePrefix}}localVarAuthNames = new String[] { {{#authMethods}}"{{name}}"{{#hasMore}}, {{/hasMore}}{{/authMethods}} };
+        String[] {{localVariablePrefix}}localVarAuthNames = new String[] { "oauth2" };
         return {{localVariablePrefix}}apiClient.buildCall({{localVariablePrefix}}localVarPath, "{{httpMethod}}", {{localVariablePrefix}}localVarQueryParams, {{localVariablePrefix}}localVarCollectionQueryParams, {{localVariablePrefix}}localVarPostBody, {{localVariablePrefix}}localVarHeaderParams, {{localVariablePrefix}}localVarFormParams, {{localVariablePrefix}}localVarAuthNames, progressRequestListener);
     }
 

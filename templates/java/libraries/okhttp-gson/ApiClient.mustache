@@ -2,6 +2,8 @@
 
 package {{invokerPackage}};
 
+import {{invokerPackage}}.auth.*;
+import {{modelPackage}}.AccessTokenResponse;
 import com.squareup.okhttp.*;
 import com.squareup.okhttp.internal.http.HttpMethod;
 import com.squareup.okhttp.logging.HttpLoggingInterceptor;
@@ -46,11 +48,6 @@ import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import {{invokerPackage}}.auth.Authentication;
-import {{invokerPackage}}.auth.HttpBasicAuth;
-import {{invokerPackage}}.auth.ApiKeyAuth;
-import {{invokerPackage}}.auth.OAuth;
-
 public class ApiClient {
 
     private String basePath = "{{{basePath}}}";
@@ -74,6 +71,8 @@ public class ApiClient {
 
     private HttpLoggingInterceptor loggingInterceptor;
 
+    private AuthService authService;
+
     /*
      * Constructor for ApiClient
      */
@@ -93,12 +92,16 @@ public class ApiClient {
         setUserAgent("{{#httpUserAgent}}{{{.}}}{{/httpUserAgent}}{{^httpUserAgent}}Swagger-Codegen/{{{artifactVersion}}}/java{{/httpUserAgent}}");
 
         // Setup authentications (key: authentication name, value: authentication).
-        authentications = new HashMap<String, Authentication>();{{#authMethods}}{{#isBasic}}
-        authentications.put("{{name}}", new HttpBasicAuth());{{/isBasic}}{{#isApiKey}}
-        authentications.put("{{name}}", new ApiKeyAuth({{#isKeyInHeader}}"header"{{/isKeyInHeader}}{{^isKeyInHeader}}"query"{{/isKeyInHeader}}, "{{keyParamName}}"));{{/isApiKey}}{{#isOAuth}}
-        authentications.put("{{name}}", new OAuth());{{/isOAuth}}{{/authMethods}}
+        authentications = new HashMap<String, Authentication>();
+        authentications.put("oauth2", new OAuth());
         // Prevent the authentications from being modified.
         authentications = Collections.unmodifiableMap(authentications);
+    }
+
+    public ApiClient(AuthService authService)
+    {
+        this();
+        this.authService = authService;
     }
 
     /**
@@ -985,6 +988,10 @@ public class ApiClient {
      * @throws ApiException If fail to serialize the request body object
      */
     public Request buildRequest(String path, String method, List<Pair> queryParams, List<Pair> collectionQueryParams, Object body, Map<String, String> headerParams, Map<String, Object> formParams, String[] authNames, ProgressRequestBody.ProgressRequestListener progressRequestListener) throws ApiException {
+        AccessTokenResponse response = this.authService.getTokenResponse();
+        this.setBasePath(response.getRestInstanceUrl());
+        this.setAccessToken(response.getAccessToken());
+
         updateParamsForAuth(authNames, queryParams, headerParams);
 
         final String url = buildUrl(path, queryParams, collectionQueryParams);
