@@ -11,13 +11,6 @@ java -jar ${CLI_JAR} generate \
     -i ${SFMC_SWAGGER_ROOT_FOLDER}/openapi-2.0/sfmc-openapi-v2.json \
     -t ${JAVA_TEMPLATES_PATH} \
     -o ${JAVA_SDK_GIT_REPO_FOLDER} \
-    -c ${SFMC_SWAGGER_ROOT_FOLDER}/openapi-2.0/swagger-codegen-config-java.json \
-    # -DmodelTests=false \
-    # --additional-properties packageTitle="Salesforce Marketing Cloud C# SDK" \
-    # --additional-properties packageCompany="Salesforce" \
-    # --additional-properties packageProductName="Salesforce Marketing Cloud C# SDK" \
-    # --additional-properties packageDescription="The Salesforce Marketing Cloud C# SDK" \
-    # --additional-properties packageAuthors="Salesforce" \
-    # --additional-properties packageCopyright="Copyright © Salesforce ${CURRENT_YEAR}" \
+    -c ${SFMC_SWAGGER_ROOT_FOLDER}/openapi-2.0/swagger-codegen-config-java.json
 
 exit $?
