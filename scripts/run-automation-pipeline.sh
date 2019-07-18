@@ -8,16 +8,22 @@ echo "SDK_REPOS_ROOT_FOLDER=${SDK_REPOS_ROOT_FOLDER}"
 
 bash ./validate-openapi-spec.sh
 
-bash ./build-client-generator.sh
+# bash ./build-client-generator.sh
 
-bash ./run-client-generator-unit-tests.sh
+# bash ./run-client-generator-unit-tests.sh
 
-bash ./run-client-generator-integration-tests.sh
+# bash ./run-client-generator-integration-tests.sh
 
-bash ./publish-client-generator.sh
+# bash ./publish-client-generator.sh
 
-pushd ${SFMC_SWAGGER_ROOT_FOLDER}/scripts/csharp
+# pushd ${SFMC_SWAGGER_ROOT_FOLDER}/scripts/csharp
 
-bash ./run-csharp-automation-pipeline.sh
+# bash ./run-csharp-automation-pipeline.sh
+
+# popd
+
+pushd ${SFMC_SWAGGER_ROOT_FOLDER}/scripts/java
+
+bash ./run-java-automation-pipeline.sh
 
 popd
