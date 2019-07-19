@@ -1,31 +1,28 @@
-# This a POC of a C# API client built with Swagger Codegen.
+# Automation Pipeline to generate API clients using Swagger Codegen
 
-## Getting started with the custom C# generator
+## Open API spec
+The Open API spec describing the API routes can be found in `./openapi-2.0/sfmc-openapi-v2.json`
 
-Before the first execution of the custom generator, you should run the following scripts:
+## Running the Automation Pipeline
 
-1. Execute the script to build the custom C# generator: `scripts\build-custom-csharp-generator.bat`
-2. Execute the script to generate the C# API client: `scripts\generate-csharp-api-client.bat`
+Modify the Open API spec and then start the automation pipeline using the `run-automation-pipeline.sh` script.
 
 ```
 cd scripts
-build-custom-csharp-generator.bat
-generate-csharp-api-client.bat
+./run-automation-pipeline.sh
 ```
 
-## Customizing the custom C# generator
+## Supported languages
+1. C#
+2. Java
 
-The mustache templates can be found in `generators\csharp\src\main\resources\csharp`. They are part of a Maven project for the custom generator that can be found in `generators\csharp`.
+## Running the integration tests
 
-You can customize the mustache templates and the supporting class `generators\csharp\src\main\java\io\swagger\codegen\CsharpGenerator.java` for new mustache templates, but you need to build the Maven project by executing the `scripts\build-custom-csharp-generator.bat` script, or by running `mvn clean package` in the root folder of the Maven project.
+The integration tests expect config values to exist in the environment variables
 
-## Running the Swagger Codegen CLI
-
-To run the Swagger Codegen CLI and generate the C# API client from the Open API spec, run the `scripts\generate-csharp-api-client.bat` script.
-
-## Running the Integration tests
-
-Create a class named ApiTests in the Salesforce.MarketingCloud.Test project. 
-It should have the same content as the ApiTests.cs.template file.
-
-To run the tests, enter valid values for the fields: authBasePath, clientId, clientSecret, accountId.
+```
+setx SFMC_ACCOUNT_ID "<<ACCOUNT_ID>>"
+setx SFMC_AUTH_BASE_PATH "<<AUTH_TSE>>"
+setx SFMC_CLIENT_ID "<<CLIENT_ID>>"
+setx SFMC_CLIENT_SECRET "<<CLIENT_SECRET>>"
+```
