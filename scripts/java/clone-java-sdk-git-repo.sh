@@ -10,6 +10,8 @@ JAVA_SDK_GIT_REPO_FOLDER="${SDK_REPOS_ROOT_FOLDER}/${JAVA_SDK_GIT_REPO_ID}"
             git fetch
             git checkout $BRANCH_NAME
             git pull origin $BRANCH_NAME
+            # merge the destination branch into the source branch
+            git pull origin $DESTINATION_BRANCH_NAME
         popd
     else
         echo "${JAVA_SDK_GIT_REPO_ID} repo does not exist"
@@ -18,6 +20,8 @@ JAVA_SDK_GIT_REPO_FOLDER="${SDK_REPOS_ROOT_FOLDER}/${JAVA_SDK_GIT_REPO_ID}"
             cd $JAVA_SDK_GIT_REPO_ID
             git fetch
             git checkout $BRANCH_NAME
+            # merge the destination branch into the source branch
+            git pull origin $DESTINATION_BRANCH_NAME
         popd
     fi
 
