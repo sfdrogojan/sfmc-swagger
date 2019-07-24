@@ -3,7 +3,7 @@
 source ../setup-variables.sh
 
 CLI_JAR="${SFMC_SWAGGER_ROOT_FOLDER}/cli/swagger-codegen-cli-2.4.4.jar"
-JAVA_TEMPLATES_PATH="${SFMC_SWAGGER_ROOT_FOLDER}/templates/Java"
+JAVA_TEMPLATES_PATH="${SFMC_SWAGGER_ROOT_FOLDER}/templates/java"
 CURRENT_YEAR=`date +'%Y'`
 
 java -jar ${CLI_JAR} generate \
