@@ -20,6 +20,8 @@ TRIGGERED_BY_PULL_REQUEST=`hub pr list -f "%U"`
 
 popd
 
+# TODO - check if open PR already exists in the SDK repo
+
 # create pull request
 pushd $CSHARP_SDK_GIT_REPO_FOLDER
 
