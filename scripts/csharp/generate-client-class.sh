@@ -11,11 +11,11 @@ CSHARP_SDK_API_FOLDER=${CSHARP_SDK_GIT_REPO_FOLDER}/src/Salesforce.MarketingClou
 if [ $OSTYPE = "msys" ]; then # Windows
     pushd ${CLIENT_GENERATOR_WIN_X64_CLI_FOLDER}
         ./client-generator.exe generate -l csharp -i ${CSHARP_SDK_API_FOLDER}
+        exit $?
     popd
 else
     pushd ${CLIENT_GENERATOR_LINUX_X64_CLI_FOLDER}
         dotnet client-generator.dll generate -l csharp -i ${CSHARP_SDK_API_FOLDER}
+        exit $?
     popd
 fi
-
-exit $?

@@ -5,7 +5,6 @@ source ../setup-variables.sh
 pushd ${JAVA_SDK_GIT_REPO_FOLDER}
 
 mvn test
+exit $?
 
 popd
-
-exit $?

@@ -32,13 +32,15 @@ create_pull_request()
         if [ "$CHECK_PR_ALREADY_OPEN_COMMAND" = "" ]; then
             echo "Creating PR from ${BRANCH_NAME} to ${DESTINATION_BRANCH_NAME}"
 
-            git fetch
-            git checkout $BRANCH_NAME
+            git fetch &&
+            git checkout $BRANCH_NAME &&
 
             hub pull-request \
                 -m "Automation pipeline update" \
                 -m "PR created due to ${TRIGGERED_BY_PULL_REQUEST}" \
                 -b ${DESTINATION_BRANCH_NAME}
+
+            exit $?
         else
             echo "PR from ${BRANCH_NAME} to ${DESTINATION_BRANCH_NAME} already open"
         fi
@@ -72,7 +74,7 @@ git_push()
         # Pushes the changes in the local repository up to the remote repository
         echo "Git pushing to https://github.com/${GIT_USER_ID}/${GIT_REPO_ID}.git"
         git push origin-with-token $BRANCH_NAME 2>&1 | grep -v 'To https'
-
+        exit $?
     popd
 }
 
@@ -84,21 +86,22 @@ clone_sdk_git_repo()
     if [ -d $SDK_GIT_REPO_FOLDER ]; then
         echo "${SDK_GIT_REPO_ID} repo exists"
         pushd $SDK_GIT_REPO_FOLDER
-            git fetch
-            git checkout $BRANCH_NAME
-            git pull origin $BRANCH_NAME
+            git fetch &&
+            git checkout $BRANCH_NAME &&
+            git pull origin $BRANCH_NAME &&
             # merge the destination branch into the source branch
             git pull origin $DESTINATION_BRANCH_NAME
+            exit $?
         popd
     else
         echo "${SDK_GIT_REPO_ID} repo does not exist"
         pushd $SDK_REPOS_ROOT_FOLDER
-            git clone https://github.com/${GIT_USER_ID}/${SDK_GIT_REPO_ID}
-            cd $SDK_GIT_REPO_ID
-            git fetch
-            git checkout $BRANCH_NAME
-            # merge the destination branch into the source branch
+            git clone https://github.com/${GIT_USER_ID}/${SDK_GIT_REPO_ID} &&
+            cd $SDK_GIT_REPO_ID &&
+            git fetch &&
+            git checkout $BRANCH_NAME &&
             git pull origin $DESTINATION_BRANCH_NAME
+            exit $?
         popd
     fi
 }
