@@ -4,28 +4,28 @@ source ./common-variables.sh
 
 CLIENT_GENERATOR_ROOT_FOLDER=${SFMC_SWAGGER_ROOT_FOLDER}/generators/ClientGenerator
 
-pushd ${CLIENT_GENERATOR_ROOT_FOLDER}
+pushd ${CLIENT_GENERATOR_ROOT_FOLDER} &&
 
-pushd "ClientGenerator"
+    pushd "ClientGenerator" &&
 
-dotnet restore
-dotnet msbuild ClientGenerator.csproj -p:Configuration=Release
+        dotnet restore &&
+        dotnet msbuild ClientGenerator.csproj -p:Configuration=Release &&
 
-popd
+    popd &&
 
-pushd "ClientGenerator.UnitTests"
+    pushd "ClientGenerator.UnitTests" &&
 
-dotnet restore
-dotnet msbuild ClientGenerator.UnitTests.csproj -p:Configuration=Release
+        dotnet restore &&
+        dotnet msbuild ClientGenerator.UnitTests.csproj -p:Configuration=Release &&
 
-popd
+    popd &&
 
-pushd "ClientGenerator.IntegrationTests"
+    pushd "ClientGenerator.IntegrationTests" &&
 
-dotnet restore
-dotnet msbuild ClientGenerator.IntegrationTests.csproj -p:Configuration=Release
+        dotnet restore &&
+        dotnet msbuild ClientGenerator.IntegrationTests.csproj -p:Configuration=Release &&
 
-popd
+    popd &&
 
 popd
 
