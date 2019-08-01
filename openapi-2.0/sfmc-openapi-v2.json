@@ -14,23 +14,6 @@
     }
   },
   "host": "www.exacttargetapis.com",
-  "securityDefinitions": {
-    "OAuth2": {
-      "type": "oauth2",
-      "flow": "accessCode",
-      "authorizationUrl": "https://example.com/oauth/authorize",
-      "tokenUrl": "https://example.com/oauth/token",
-      "scopes": {
-        "read": "read all",
-        "write": "write all"
-      }
-    }
-  },
-  "security": [
-    {
-      "OAuth2": ["read"]
-    }
-  ],
   "paths": {
     "/asset/v1/content/assets/{id}": {
       "get": {
