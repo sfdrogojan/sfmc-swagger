@@ -14,6 +14,23 @@
     }
   },
   "host": "www.exacttargetapis.com",
+  "securityDefinitions": {
+    "OAuth2": {
+      "type": "oauth2",
+      "flow": "accessCode",
+      "authorizationUrl": "https://example.com/oauth/authorize",
+      "tokenUrl": "https://example.com/oauth/token",
+      "scopes": {
+        "read": "read all",
+        "write": "write all"
+      }
+    }
+  },
+  "security": [
+    {
+      "OAuth2": ["read"]
+    }
+  ],
   "paths": {
     "/asset/v1/content/assets/{id}": {
       "get": {
@@ -767,10 +784,10 @@
         "parameters": [
           {
             "name": "messageKey",
-						"in": "path",
-						"description": "Unique identifier used to track message status. Can be automatically created when you create a message or provided as part of the request. Each recipient in a request must have a unique messageKey. If you use a duplicate messageKey in the same send request, the message is rejected.",
-						"required": true,
-						"type": "string"
+            "in": "path",
+            "description": "Unique identifier used to track message status. Can be automatically created when you create a message or provided as part of the request. Each recipient in a request must have a unique messageKey. If you use a duplicate messageKey in the same send request, the message is rejected.",
+            "required": true,
+            "type": "string"
           },
           {
             "name": "body",
@@ -816,8 +833,8 @@
         "operationId": "sendEmailToSingleRecipient"
       }
     },
-    "/messaging/v1/sms/definitions/{definitionKey}":{
-      "get":{
+    "/messaging/v1/sms/definitions/{definitionKey}": {
+      "get": {
         "tags": [
           "transactionalMessaging"
         ],
@@ -967,7 +984,7 @@
         "operationId": "deleteSmsDefinition"
       }
     },
-    "/messaging/v1/sms/definitions":{
+    "/messaging/v1/sms/definitions": {
       "post": {
         "tags": [
           "transactionalMessaging"
@@ -1095,7 +1112,7 @@
         "operationId": "getSmsDefinitions"
       }
     },
-    "/messaging/v1/sms/definitions/{definitionKey}/queue":{
+    "/messaging/v1/sms/definitions/{definitionKey}/queue": {
       "get": {
         "tags": [
           "transactionalMessaging"
@@ -1171,7 +1188,7 @@
         "operationId": "deleteQueuedMessagesForSmsDefinition"
       }
     },
-    "/messaging/v1/sms/messages/":{
+    "/messaging/v1/sms/messages/": {
       "post": {
         "tags": [
           "transactionalMessaging"
@@ -1274,7 +1291,7 @@
         "operationId": "getSMSsNotSentToRecipients"
       }
     },
-    "/messaging/v1/sms/messages/{messageKey}":{
+    "/messaging/v1/sms/messages/{messageKey}": {
       "post": {
         "tags": [
           "transactionalMessaging"
@@ -1284,10 +1301,10 @@
         "parameters": [
           {
             "name": "messageKey",
-						"in": "path",
-						"description": "Unique identifier of the definition used to track message status. The messageKey can be created automatically when you create a message, or you can provide it as part of the request. Each recipient in a request must have a unique messageKey. If you use a duplicate messageKey in the same send request, the message is rejected.",
-						"required": true,
-						"type": "string"
+            "in": "path",
+            "description": "Unique identifier of the definition used to track message status. The messageKey can be created automatically when you create a message, or you can provide it as part of the request. Each recipient in a request must have a unique messageKey. If you use a duplicate messageKey in the same send request, the message is rejected.",
+            "required": true,
+            "type": "string"
           },
           {
             "name": "body",
@@ -1657,7 +1674,7 @@
         }
       }
     },
-    "UpdateEmailDefinitionRequest":{
+    "UpdateEmailDefinitionRequest": {
       "type": "object",
       "properties": {
         "name": {
@@ -1687,7 +1704,7 @@
         }
       }
     },
-    "UpdateSmsDefinitionRequest":{
+    "UpdateSmsDefinitionRequest": {
       "type": "object",
       "properties": {
         "name": {
@@ -1701,7 +1718,7 @@
           "description": "Operational state of the definition: active, inactive, or deleted. A message sent to an active definition is processed and delivered. A message sent to an inactive definition isn’t processed or delivered. Instead, the message is queued for later processing for up to three days.",
           "type": "string"
         },
-        "description":{
+        "description": {
           "description": "User-provided description of the SMS definition.",
           "type": "string"
         },
@@ -2064,7 +2081,7 @@
         }
       }
     },
-    "SendEmailToSingleRecipientRequest":{
+    "SendEmailToSingleRecipientRequest": {
       "type": "object",
       "required": [
         "definitionKey",
@@ -2080,7 +2097,7 @@
         }
       }
     },
-    "SendDefinitionToSingleRecipientResponse":{
+    "SendDefinitionToSingleRecipientResponse": {
       "type": "object",
       "properties": {
         "requestId": {
@@ -2100,7 +2117,7 @@
         }
       }
     },
-    "CreateSmsDefinitionRequest":{
+    "CreateSmsDefinitionRequest": {
       "type": "object",
       "required": [
         "definitionKey",
@@ -2136,7 +2153,7 @@
           "format": "date-time",
           "readOnly": true
         },
-        "description":{
+        "description": {
           "description": "User-provided description of the SMS definition.",
           "type": "string"
         },
@@ -2150,7 +2167,7 @@
         }
       }
     },
-    "CreateSmsDefinitionContent":{
+    "CreateSmsDefinitionContent": {
       "type": "object",
       "required": [
         "message"
@@ -2162,7 +2179,7 @@
         }
       }
     },
-    "CreateSmsDefinitionSubscriptions":{
+    "CreateSmsDefinitionSubscriptions": {
       "type": "object",
       "required": [
         "shortCode",
@@ -2177,18 +2194,18 @@
           "description": "The country code associated with the shortCode for the mobile transmissions for each message on this definition.",
           "type": "string"
         },
-        "keyword":{
+        "keyword": {
           "description": "The keyword used to track messages.",
           "type": "string"
         },
-        "autoAddSubscriber":{
+        "autoAddSubscriber": {
           "description": "Permits adding a recipient as subscriber against the shortCode using contactKey. When false, the message is rejected if contactKey does not exist as a subscriber. Default is true.",
           "type": "boolean",
           "default": true
         }
       }
     },
-    "GetSmsDefinitionsResponse":{
+    "GetSmsDefinitionsResponse": {
       "type": "object",
       "properties": {
         "requestId": {
@@ -2215,7 +2232,7 @@
         }
       }
     },
-    "SendSmsToMultipleRecipientsRequest":{
+    "SendSmsToMultipleRecipientsRequest": {
       "type": "object",
       "required": [
         "definitionKey",
@@ -2233,30 +2250,30 @@
             "$ref": "#/definitions/Recipient"
           }
         },
-        "subscriptions":{
+        "subscriptions": {
           "$ref": "#/definitions/SendSmsToMultipleRecipientsSubscriptionsRequest"
         },
-        "content":{
+        "content": {
           "$ref": "#/definitions/SendSmsContentRequest"
         },
-        "attributes":{
+        "attributes": {
           "$ref": "#/definitions/Attributes"
         }
       }
     },
-    "Attributes":{
+    "Attributes": {
       "type": "object"
     },
-    "SendSmsToMultipleRecipientsSubscriptionsRequest":{
+    "SendSmsToMultipleRecipientsSubscriptionsRequest": {
       "type": "object",
       "properties": {
-        "resubscribe":{
+        "resubscribe": {
           "description": "Forces the message send request to subscribe the mobile number back into a short code if a user may have requested STOP. Often used to ensure that critical transactional messages are delivered irrespective of a mobile number subscriber status.",
           "type": "boolean"
         }
       }
     },
-    "SendSmsContentRequest":{
+    "SendSmsContentRequest": {
       "type": "object",
       "properties": {
         "message": {
@@ -2265,7 +2282,7 @@
         }
       }
     },
-    "SendSmsToSingleRecipientRequest":{
+    "SendSmsToSingleRecipientRequest": {
       "type": "object",
       "required": [
         "definitionKey",
@@ -2279,7 +2296,7 @@
         "recipient": {
           "$ref": "#/definitions/Recipient"
         },
-        "content":{
+        "content": {
           "$ref": "#/definitions/SendSmsContentRequest"
         }
       }
