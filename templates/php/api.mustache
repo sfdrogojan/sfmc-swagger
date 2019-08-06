@@ -25,6 +25,7 @@ use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
 use GuzzleHttp\RequestOptions;
 use {{invokerPackage}}\ApiException;
+use {{invokerPackage}}\Api\Exception\ClientUnauthorizedException;
 use {{invokerPackage}}\Configuration;
 use {{invokerPackage}}\HeaderSelector;
 use {{invokerPackage}}\ObjectSerializer;
@@ -55,15 +56,19 @@ use {{invokerPackage}}\ObjectSerializer;
     protected $headerSelector;
 
     /**
+     * @param callable        $authServiceCallable
      * @param ClientInterface $client
      * @param Configuration   $config
      * @param HeaderSelector  $selector
      */
     public function __construct(
+        callable $authServiceCallable = null,
         ClientInterface $client = null,
         Configuration $config = null,
         HeaderSelector $selector = null
     ) {
+        parent::__construct($authServiceCallable);
+
         $this->client = $client ?: new Client();
         $this->config = $config ?: new Configuration();
         $this->headerSelector = $selector ?: new HeaderSelector();
@@ -292,10 +297,16 @@ use {{invokerPackage}}\ObjectSerializer;
 {{/allParams}}
      *
      * @throws \InvalidArgumentException
+     * @throws ClientUnauthorizedException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function {{operationId}}Request({{#allParams}}${{paramName}}{{^required}} = {{#defaultValue}}'{{{.}}}'{{/defaultValue}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}})
     {
+        $accessToken = $this->authorizeClient();
+        if (empty($accessToken)) {
+            throw new ClientUnauthorizedException();
+        }
+
         {{#allParams}}
         {{#required}}
         // verify the required parameter '{{paramName}}' is set
@@ -472,6 +483,9 @@ use {{invokerPackage}}\ObjectSerializer;
         }
         {{/isOAuth}}
         {{/authMethods}}
+
+        // Set the header for the authorization access token
+        $headers['Authorization'] = 'Bearer ' . $accessToken;
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
