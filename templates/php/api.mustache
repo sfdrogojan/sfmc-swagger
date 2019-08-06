@@ -39,42 +39,6 @@ use {{invokerPackage}}\ObjectSerializer;
  */
 {{#operations}}class {{classname}} extends AbstractApi
 {
-    /**
-     * @var ClientInterface
-     */
-    protected $client;
-
-    /**
-     * @var HeaderSelector
-     */
-    protected $headerSelector;
-
-    /**
-     * @param callable        $authServiceCallable
-     * @param ClientInterface $client
-     * @param Configuration   $config
-     * @param HeaderSelector  $selector
-     */
-    public function __construct(
-        callable $authServiceCallable = null,
-        ClientInterface $client = null,
-        Configuration $config = null,
-        HeaderSelector $selector = null
-    ) {
-        parent::__construct($authServiceCallable);
-
-        $this->client = $client ?: new Client();
-        $this->config = $config ?: new Configuration();
-        $this->headerSelector = $selector ?: new HeaderSelector();
-    }
-
-    /**
-     * @return Configuration
-     */
-    public function getConfig()
-    {
-        return $this->config;
-    }
 
 {{#operation}}
     /**
