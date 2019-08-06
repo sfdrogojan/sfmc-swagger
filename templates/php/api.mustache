@@ -296,11 +296,12 @@ use {{invokerPackage}}\ObjectSerializer;
 {{/allParams}}
      *
      * @throws \InvalidArgumentException
+     * @throws Exception\ClientUnauthorizedException
      * @return \GuzzleHttp\Psr7\Request
      */
     protected function {{operationId}}Request({{#allParams}}${{paramName}}{{^required}} = {{#defaultValue}}'{{{.}}}'{{/defaultValue}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}})
     {
-        $accessToken = $this->authorizeClient();
+        $this->authorizeClient();
 
         {{#allParams}}
         {{#required}}
@@ -480,7 +481,9 @@ use {{invokerPackage}}\ObjectSerializer;
         {{/authMethods}}
 
         // Set the header for the authorization access token
-        $headers['Authorization'] = 'Bearer ' . $accessToken;
+        if ($this->config->getAccessToken() !== null) {
+            $headers['Authorization'] = 'Bearer ' . $this->config->getAccessToken();
+        }
 
         $defaultHeaders = [];
         if ($this->config->getUserAgent()) {
