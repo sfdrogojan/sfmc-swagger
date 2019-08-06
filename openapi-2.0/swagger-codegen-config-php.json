@@ -8,5 +8,7 @@
     "artifactVersion": "1.0.0",
     "modelPackage": "Model",
     "apiPackage": "Api",
-    "hideGenerationTimestamp": true
+    "hideGenerationTimestamp": true,
+    "composerVendorName": "sfdrogojan",
+    "composerProjectName": "sfmc-php-sdk"
 }
