@@ -16,9 +16,7 @@
  * Please update the test case below to test the endpoint.
  */
 
-namespace {{invokerPackage}};
-
-use PHPUnit\Framework\TestCase;
+namespace {{invokerPackage}}\Test\Api;
 
 /**
  * {{classname}}Test Class Doc Comment
@@ -28,7 +26,7 @@ use PHPUnit\Framework\TestCase;
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-{{#operations}}class {{classname}}Test extends TestCase
+{{#operations}}class {{classname}}Test extends AbstractApiTest
 {
     {{#operation}}
     
@@ -40,6 +38,8 @@ use PHPUnit\Framework\TestCase;
      */
     public function test{{vendorExtensions.x-testOperationId}}()
     {
+        $actionMethod = $this->selectActionMethod("{{httpMethod}}");
+        $this->$actionMethod("{{{operationId}}}"));
     }
     {{/operation}}
 }
