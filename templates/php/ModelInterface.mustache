@@ -70,6 +70,13 @@ interface ModelInterface
     public static function getters();
 
     /**
+     * The test name of the model.
+     *
+     * @return string
+     */
+    public static function getTestModelClass(): string;
+
+    /**
      * Show all the invalid properties with reasons.
      *
      * @return array
