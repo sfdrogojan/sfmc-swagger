@@ -18,6 +18,12 @@
 
 namespace {{invokerPackage}}\Test\Api;
 
+use GuzzleHttp\Client;
+use {{invokerPackage}}\Authorization\TestHelper\AuthServiceTestFactory;
+use {{invokerPackage}}\Configuration;
+use {{apiPackage}}\AbstractApi;
+use {{apiPackage}}\{{classname}};
+
 /**
  * {{classname}}Test Class Doc Comment
  *
@@ -28,6 +34,32 @@ namespace {{invokerPackage}}\Test\Api;
  */
 {{#operations}}class {{classname}}Test extends AbstractApiTest
 {
+    /**
+     * @var string
+     */
+    protected static $modelNamespace = "\{{modelPackage}}";
+
+    /**
+     * Creates the client required to do the API calls
+     *
+     * @return {{classname}}|AbstractApi
+     */
+    protected function createClient(): AbstractApi
+    {
+        if (null === $this->client) {
+            $config = new Configuration();
+            $config->setHost(getenv("API_URL"));
+
+            $this->client = new {{classname}}(
+                [AuthServiceTestFactory::class, 'factory'],
+                new Client(['verify' => false]),
+                $config
+            );
+        }
+
+        return $this->client;
+    }
+
     {{#operation}}
     
     /**
@@ -38,8 +70,15 @@ namespace {{invokerPackage}}\Test\Api;
      */
     public function test{{vendorExtensions.x-testOperationId}}()
     {
+        $modelClass = "{{returnType}}";
+        if (empty($modelClass)) {
+            $modelClass = $this->guessModelClass("{{operationId}}");
+        }
+
+        $this->createResourceOnEndpoint($modelClass);
+
         $actionMethod = $this->selectActionMethod("{{httpMethod}}");
-        $this->$actionMethod("{{{operationId}}}"));
+        $this->$actionMethod("{{operationId}}");
     }
     {{/operation}}
 }
