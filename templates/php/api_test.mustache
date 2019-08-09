@@ -20,6 +20,7 @@ namespace {{invokerPackage}}\Test\Api;
 
 use GuzzleHttp\Client;
 use {{invokerPackage}}\TestHelper\Authorization\AuthServiceTestFactory;
+use {{invokerPackage}}\TestHelper\Api\BaseApiTest;
 use {{invokerPackage}}\Configuration;
 use {{apiPackage}}\AbstractApi;
 use {{apiPackage}}\{{classname}};
@@ -32,7 +33,7 @@ use {{apiPackage}}\{{classname}};
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-{{#operations}}class {{classname}}Test extends AbstractApiTest
+{{#operations}}class {{classname}}Test extends BaseApiTest
 {
     /**
      * @var string
