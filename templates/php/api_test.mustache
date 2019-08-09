@@ -70,15 +70,13 @@ use {{apiPackage}}\{{classname}};
      */
     public function test{{vendorExtensions.x-testOperationId}}()
     {
-        $modelClass = "{{returnType}}";
-        if (empty($modelClass)) {
-            $modelClass = $this->guessModelClass("{{operationId}}");
-        }
+        $this->setModelClass(
+            __FUNCTION__,
+            "{{returnType}}"
+        );
 
-        $this->createResourceOnEndpoint($modelClass);
-
-        $actionMethod = $this->selectActionMethod("{{httpMethod}}");
-        $this->$actionMethod("{{operationId}}");
+        $this->createResourceOnEndpoint();
+        $this->executeOperation("{{httpMethod}}", "{{operationId}}");
     }
     {{/operation}}
 }
