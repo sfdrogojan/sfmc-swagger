@@ -1878,7 +1878,7 @@
           "description": "The ID of the request",
           "type": "string"
         },
-        "errorCode": {
+        "errorcode": {
           "description": "The specific error code",
           "type": "number"
         },
@@ -2087,7 +2087,7 @@
           "description": "The ID of the request",
           "type": "string"
         },
-        "errorCode": {
+        "errorcode": {
           "description": "The specific error code",
           "type": "number"
         },
