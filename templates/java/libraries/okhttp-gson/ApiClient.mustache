@@ -3,6 +3,7 @@
 package {{invokerPackage}};
 
 import {{invokerPackage}}.auth.*;
+import {{invokerPackage}}.exception.ApiExceptionFactory;
 import {{modelPackage}}.TokenResponse;
 import com.squareup.okhttp.*;
 import com.squareup.okhttp.internal.http.HttpMethod;
@@ -939,15 +940,7 @@ public class ApiClient {
                 return deserialize(response, returnType);
             }
         } else {
-            String respBody = null;
-            if (response.body() != null) {
-                try {
-                    respBody = response.body().string();
-                } catch (IOException e) {
-                    throw new ApiException(response.message(), e, response.code(), response.headers().toMultimap());
-                }
-            }
-            throw new ApiException(response.message(), response.code(), response.headers().toMultimap(), respBody);
+            throw ApiExceptionFactory.create(response);
         }
     }
 
