@@ -18,12 +18,7 @@
 
 namespace {{invokerPackage}}\Test\Api;
 
-use GuzzleHttp\Client;
-use {{invokerPackage}}\TestHelper\Authorization\AuthServiceTestFactory;
 use {{invokerPackage}}\TestHelper\Api\BaseApiTest;
-use {{invokerPackage}}\Configuration;
-use {{apiPackage}}\AbstractApi;
-use {{apiPackage}}\{{classname}};
 
 /**
  * {{classname}}Test Class Doc Comment
@@ -36,30 +31,16 @@ use {{apiPackage}}\{{classname}};
 {{#operations}}class {{classname}}Test extends BaseApiTest
 {
     /**
+     * The client class to use in order to build the client object
+     *
+     * @var string
+     */
+    protected $clientClass = \{{apiPackage}}\{{classname}}::class;
+
+    /**
      * @var string
      */
     protected static $modelNamespace = "\{{modelPackage}}";
-
-    /**
-     * Creates the client required to do the API calls
-     *
-     * @return {{classname}}|AbstractApi
-     */
-    protected function createClient(): AbstractApi
-    {
-        if (null === $this->client) {
-            $config = new Configuration();
-            $config->setHost(getenv("API_URL"));
-
-            $this->client = new {{classname}}(
-                [AuthServiceTestFactory::class, 'factory'],
-                new Client(['verify' => false]),
-                $config
-            );
-        }
-
-        return $this->client;
-    }
 
     {{#operation}}
     
@@ -67,7 +48,7 @@ use {{apiPackage}}\{{classname}};
      * Test case for {{{operationId}}}
      *
      * {{{summary}}}.
-     *
+     * @throws \Exception
      */
     public function test{{vendorExtensions.x-testOperationId}}()
     {
