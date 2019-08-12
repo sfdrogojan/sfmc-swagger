@@ -52,13 +52,25 @@ use {{invokerPackage}}\TestHelper\Api\BaseApiTest;
      */
     public function test{{vendorExtensions.x-testOperationId}}()
     {
-        $this->setModelClass(
+        $this->setHttpMethod("{{httpMethod}}");
+
+        // Looking for a decorator first
+        /** @var \{{invokerPackage}}\TestHelper\Decorator\{{classname}}Decorator $decorator */
+        $decorator = $this->getDecorator();
+        if (method_exists($decorator, "test{{vendorExtensions.x-testOperationId}}")) {
+            return $decorator->test{{vendorExtensions.x-testOperationId}}();
+        }
+        
+        // Setting up the resource creator
+        $resourceCreator = $this->getResourceCreator();
+        $resourceCreator->setModelClass(
             __FUNCTION__,
             "{{returnType}}"
         );
 
+        // SUT
         $this->createResourceOnEndpoint();
-        $this->executeOperation("{{httpMethod}}", "{{operationId}}");
+        $this->executeOperation("{{operationId}}");
     }
     {{/operation}}
 }
