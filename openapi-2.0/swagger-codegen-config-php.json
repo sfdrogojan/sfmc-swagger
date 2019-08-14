@@ -10,5 +10,6 @@
     "apiPackage": "Api",
     "hideGenerationTimestamp": true,
     "composerVendorName": "sfdrogojan",
-    "composerProjectName": "sfmc-php-sdk"
+    "composerProjectName": "sfmc-php-sdk",
+    "clientClassName": "Client"
 }

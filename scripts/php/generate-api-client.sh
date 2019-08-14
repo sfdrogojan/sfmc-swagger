@@ -13,4 +13,6 @@ java -jar ${CLI_JAR} generate \
     -o ${PHP_SDK_GIT_REPO_FOLDER} \
     -c ${SFMC_SWAGGER_ROOT_FOLDER}/openapi-2.0/swagger-codegen-config-php.json
 
+php ${SFMC_SWAGGER_ROOT_FOLDER}/generators/php/ClientGenerator.php ${PHP_TEMPLATES_PATH}/Api
+
 exit $?
