@@ -10,6 +10,12 @@
             <directory>{{apiTestPath}}</directory>
             <directory>{{modelTestPath}}</directory>
         </testsuite>
+        <testsuite name="{{artifactId}}-api">
+            <directory>./test/Api</directory>
+        </testsuite>
+        <testsuite name="{{artifactId}}-auth">
+            <directory>./test/Authorization</directory>
+        </testsuite>
     </testsuites>
 
     <filter>
