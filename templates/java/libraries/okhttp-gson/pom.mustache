@@ -265,6 +265,12 @@
         </dependency>
         <!-- test dependencies -->
         <dependency>
+            <groupId>org.hamcrest</groupId>
+            <artifactId>hamcrest</artifactId>
+            <version>${hamcrest-version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit-version}</version>
@@ -292,6 +298,7 @@
         {{/threetenbp}}
         <maven-plugin-version>1.0.0</maven-plugin-version>
         <junit-version>4.12</junit-version>
+        <hamcrest-version>2.1</hamcrest-version>
         <mockito-core-version>2.28.2</mockito-core-version>
         <commons-lang3-version>3.8.1</commons-lang3-version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
