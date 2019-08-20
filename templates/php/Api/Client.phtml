@@ -19,10 +19,11 @@ use SalesForce\MarketingCloud\Authorization\AuthService;
  * @method self setUrlAuthorize(string $urlAuthorize)
  * @method self setUrlAccessToken(string $urlAccessToken)
  * @method self setUrlResourceOwnerDetails(string $urlResourceOwnerDetails)
- * @version <?= $this->artifactVersion . PHP_EOL ?>
  */
 class <?= $this->clientClassName . PHP_EOL ?>
 {
+    const API_VERSION = "<?= $this->artifactVersion ?>";
+
     # List of available clients
 <?php foreach ($this->classes as $class => $fqn): ?>
     const CLIENT_<?= strtoupper(preg_replace('/(?<=\\w)(?=[A-Z])/',"_$1", $class)) ?> = <?= $fqn ?>::class;
