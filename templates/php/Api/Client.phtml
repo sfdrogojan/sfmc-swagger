@@ -120,7 +120,7 @@ class <?= $this->clientClassName . PHP_EOL ?>
     {
         if (!$this->container->has($class)) {
             /** @var \GuzzleHttp\Client $httpClient */
-            $httpClient = $this->container->get("http.client.adapter");
+            $httpClient = $this->container->get("auth.http.client");
 
             // Auth container will not be preset in the container at first load
             if (!$this->container->has(AuthService::CONTAINER_ID)) {
