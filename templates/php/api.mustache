@@ -21,8 +21,10 @@ namespace {{apiPackage}};
 use GuzzleHttp\Exception\RequestException;
 use GuzzleHttp\Psr7\MultipartStream;
 use GuzzleHttp\Psr7\Request;
+use {{apiPackage}}\Exception\InvalidRequestException;
 use {{invokerPackage}}\ApiException;
 use {{invokerPackage}}\ObjectSerializer;
+
 
 /**
  * {{classname}} Class Doc Comment
@@ -56,7 +58,7 @@ use {{invokerPackage}}\ObjectSerializer;
      * @throws \{{invokerPackage}}\ApiException on non-2xx response
      * @return {{#returnType}}{{{returnType}}}{{/returnType}}{{^returnType}}void{{/returnType}}
      */
-    public function {{operationId}}({{#allParams}}${{paramName}}{{^required}} = {{#defaultValue}}'{{{.}}}'{{/defaultValue}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}})
+    public function {{operationId}}({{#allParams}}{{dataType}} ${{paramName}}{{^required}} = {{#defaultValue}}'{{{.}}}'{{/defaultValue}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}})
     {
         {{#returnType}}list($response) = {{/returnType}}$this->{{operationId}}WithHttpInfo({{#allParams}}${{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}});{{#returnType}}
         return $response;{{/returnType}}
@@ -82,7 +84,7 @@ use {{invokerPackage}}\ObjectSerializer;
      * @throws \GuzzleHttp\Exception\GuzzleException
      * @throws \{{invokerPackage}}\ApiException on non-2xx response
      */
-    public function {{operationId}}WithHttpInfo({{#allParams}}${{paramName}}{{^required}} = {{#defaultValue}}'{{{.}}}'{{/defaultValue}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}})
+    public function {{operationId}}WithHttpInfo({{#allParams}}{{dataType}} ${{paramName}}{{^required}} = {{#defaultValue}}'{{{.}}}'{{/defaultValue}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}})
     {
         $returnType = '{{returnType}}';
         $request = $this->{{operationId}}Request({{#allParams}}${{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}});
@@ -173,7 +175,7 @@ use {{invokerPackage}}\ObjectSerializer;
      * @throws \InvalidArgumentException
      * @throws Exception\ClientUnauthorizedException
      */
-    public function {{operationId}}Async({{#allParams}}${{paramName}}{{^required}} = {{#defaultValue}}'{{{.}}}'{{/defaultValue}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}})
+    public function {{operationId}}Async({{#allParams}}{{dataType}} ${{paramName}}{{^required}} = {{#defaultValue}}'{{{.}}}'{{/defaultValue}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}})
     {
         return $this->{{operationId}}AsyncWithHttpInfo({{#allParams}}${{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}})
             ->then(
@@ -200,7 +202,7 @@ use {{invokerPackage}}\ObjectSerializer;
      * @throws Exception\ClientUnauthorizedException
      * @throws \InvalidArgumentException
      */
-    public function {{operationId}}AsyncWithHttpInfo({{#allParams}}${{paramName}}{{^required}} = {{#defaultValue}}'{{{.}}}'{{/defaultValue}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}})
+    public function {{operationId}}AsyncWithHttpInfo({{#allParams}}{{dataType}} ${{paramName}}{{^required}} = {{#defaultValue}}'{{{.}}}'{{/defaultValue}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}})
     {
         $returnType = '{{returnType}}';
         $request = $this->{{operationId}}Request({{#allParams}}${{paramName}}{{#hasMore}}, {{/hasMore}}{{/allParams}});
@@ -262,8 +264,12 @@ use {{invokerPackage}}\ObjectSerializer;
      * @throws Exception\ClientUnauthorizedException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function {{operationId}}Request({{#allParams}}${{paramName}}{{^required}} = {{#defaultValue}}'{{{.}}}'{{/defaultValue}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}})
+    protected function {{operationId}}Request({{#allParams}}{{dataType}} ${{paramName}}{{^required}} = {{#defaultValue}}'{{{.}}}'{{/defaultValue}}{{^defaultValue}}null{{/defaultValue}}{{/required}}{{#hasMore}}, {{/hasMore}}{{/allParams}})
     {
+        if (isset($body) && !$body->valid()) {
+            throw new InvalidRequestException($body, "The request data is invalid");
+        }
+
         $this->authorizeClient();
 
         {{#allParams}}

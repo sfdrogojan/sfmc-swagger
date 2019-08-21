@@ -71,6 +71,7 @@
             "name": "body",
             "in": "body",
             "description": "JSON Parameters",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/Asset"
             }
@@ -142,6 +143,7 @@
             "name": "body",
             "in": "body",
             "description": "JSON Parameters",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/Asset"
             }
@@ -182,6 +184,7 @@
             "name": "body",
             "in": "body",
             "description": "JSON Parameters",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/Campaign"
             }
@@ -268,6 +271,7 @@
             "name": "body",
             "in": "body",
             "description": "JSON Parameters",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/CreateEmailDefinitionRequest"
             }
@@ -452,6 +456,7 @@
             "name": "body",
             "in": "body",
             "description": "JSON Parameters",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/UpdateEmailDefinitionRequest"
             }
@@ -623,6 +628,7 @@
             "name": "body",
             "in": "body",
             "description": "JSON Parameters",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/SendEmailToMultipleRecipientsRequest"
             }
@@ -776,6 +782,7 @@
             "name": "body",
             "in": "body",
             "description": "JSON Parameters",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/SendEmailToSingleRecipientRequest"
             }
@@ -979,6 +986,7 @@
             "name": "body",
             "in": "body",
             "description": "JSON Parameters",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/CreateSmsDefinitionRequest"
             }
@@ -1183,6 +1191,7 @@
             "name": "body",
             "in": "body",
             "description": "JSON Parameters",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/SendSmsToMultipleRecipientsRequest"
             }
@@ -1293,6 +1302,7 @@
             "name": "body",
             "in": "body",
             "description": "JSON Parameters",
+            "required": true,
             "schema": {
               "$ref": "#/definitions/SendSmsToSingleRecipientRequest"
             }
