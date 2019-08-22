@@ -17,8 +17,8 @@ addons:
     update: true
 
 before_install:
- - sudo apt-get install -y php
+ - sudo apt-get install -y php7.2
  - wget https://getcomposer.org/download/1.9.0/composer.phar
  - sudo mv $PWD/composer.phar /usr/local/bin/composer
 script:
-  - /bin/bash ./scripts/php/run-automation-pipeline.sh
+  - cd ./scripts/php && /bin/bash ./run-automation-pipeline.sh
