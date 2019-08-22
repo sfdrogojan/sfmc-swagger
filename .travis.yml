@@ -6,13 +6,14 @@ branches:
 language: csharp
 mono: none
 sudo: required
-dist: xenial
+dist: bionic
 dotnet: 2.2
 jdk: oraclejdk8
 php:
-  - 7.3
+  - 7.2
 
 before_install:
+ - apt-get install php7.2
  - wget https://getcomposer.org/download/1.9.0/composer.phar
  - php -f $PWD/composer.phar install
 script:
