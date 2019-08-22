@@ -19,6 +19,6 @@ addons:
 before_install:
  - sudo apt-get install -y php
  - wget https://getcomposer.org/download/1.9.0/composer.phar
- - alias composer='php -f $PWD/composer.phar'
+ - alias composer='$PWD/composer.phar'
 script:
   - /bin/bash ./scripts/php/run-automation-pipeline.sh
