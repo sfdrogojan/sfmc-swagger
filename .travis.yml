@@ -3,14 +3,11 @@ branches:
     - dev
     - master
 
-language: csharp
-mono: none
+language: php
 sudo: required
 dist: bionic
-dotnet: 2.2
-jdk: oraclejdk8
 php:
-  - 7.2
+  - 7.3
 
 addons:
   apt:
