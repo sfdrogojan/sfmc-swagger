@@ -13,7 +13,7 @@ php:
   - 7.2
 
 before_install:
- - apt-get install php7.2
+ - sudo apt-get install php7.2
  - wget https://getcomposer.org/download/1.9.0/composer.phar
  - php -f $PWD/composer.phar install
 script:
