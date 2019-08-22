@@ -14,7 +14,6 @@ addons:
     update: true
 
 before_install:
- - sudo apt-get install -y php
  - wget https://getcomposer.org/download/1.9.0/composer.phar
  - sudo mv $PWD/composer.phar /usr/local/bin/composer
 script:
