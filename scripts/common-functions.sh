@@ -93,7 +93,6 @@ clone_sdk_git_repo()
             git pull origin $BRANCH_NAME &&
             # merge the destination branch into the source branch
             git pull origin $DESTINATION_BRANCH_NAME
-            exit $?
         popd
     else
         echo "${SDK_GIT_REPO_ID} repo does not exist"
@@ -103,7 +102,6 @@ clone_sdk_git_repo()
             git fetch &&
             git checkout $BRANCH_NAME &&
             git pull origin $DESTINATION_BRANCH_NAME
-            exit $?
         popd
     fi
 }
