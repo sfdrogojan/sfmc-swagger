@@ -7,14 +7,15 @@ language: php
 sudo: required
 dist: bionic
 php:
-  - 7.3
+  - "7.3"
 
 addons:
   apt:
     update: true
 
 before_install:
- - wget https://getcomposer.org/download/1.9.0/composer.phar
- - sudo mv $PWD/composer.phar /usr/local/bin/composer
+  - php --version
+  - wget https://getcomposer.org/download/1.9.0/composer.phar
+  - sudo mv $PWD/composer.phar /usr/local/bin/composer
 script:
   - cd ./scripts/php && /bin/bash ./run-automation-pipeline.sh
