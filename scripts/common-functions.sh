@@ -92,10 +92,10 @@ clone_sdk_git_repo()
     else
         echo "${SDK_GIT_REPO_ID} repo does not exist"
         pushd $SDK_REPOS_ROOT_FOLDER
-            git clone https://${GIT_USER_ID}:${GITHUB_TOKEN}@github.com/${GIT_USER_ID}/${GIT_REPO_ID} &&
-            cd $SDK_GIT_REPO_ID &&
-            git fetch &&
-            git checkout $BRANCH_NAME &&
+            git clone https://${GIT_USER_ID}:${GITHUB_TOKEN}@github.com/${GIT_USER_ID}/${GIT_REPO_ID}.git
+            cd $SDK_GIT_REPO_ID
+            git fetch
+            git checkout $BRANCH_NAME
             git pull origin $DESTINATION_BRANCH_NAME
         popd
     fi

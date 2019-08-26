@@ -1,5 +1,7 @@
 #!/bin/bash
 
+pushd ${PWD}
+
 bash ./clone-sdk-git-repo.sh
 
 bash ./generate-api-client.sh
