@@ -79,14 +79,16 @@ class ClientGenerator
         // Detect the classes
         $classes = [];
         $files = scandir($apiClassDir);
-        foreach ($files as $file) {
-            $fullPath = realpath($apiClassDir . DIRECTORY_SEPARATOR . $file);
-            if (in_array($file, ['.', '..', "AbstractApi.php", "{$clientClassName}.php"]) || is_dir($fullPath)) {
-                continue;
+        if (is_array($files)) {
+            foreach ($files as $file) {
+                $fullPath = realpath($apiClassDir . DIRECTORY_SEPARATOR . $file);
+                if (in_array($file, ['.', '..', "AbstractApi.php", "{$clientClassName}.php"]) || is_dir($fullPath)) {
+                    continue;
+                }
+    
+                $clsName = rtrim($file, ".php");
+                $classes[$clsName] = "\\" . $config["invokerPackage"] . "\\" . $config["apiPackage"] . "\\" . $clsName;
             }
-
-            $clsName = rtrim($file, ".php");
-            $classes[$clsName] = "\\" . $config["invokerPackage"] . "\\" . $config["apiPackage"] . "\\" . $clsName;
         }
 
         $this->data["classes"] = $classes;
