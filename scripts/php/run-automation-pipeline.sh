@@ -2,16 +2,29 @@
 
 pushd ${PWD}
 
-bash ./clone-sdk-git-repo.sh
+### Cloning the GitHub repository
+git_clone ${PHP_SDK_GIT_REPO_ID}
 
+# Checkout relevant branch (testing only)
+pushd ${PHP_SDK_GIT_REPO_FOLDER}
+    git checkout feature/client-validation
+popd
+
+### Generating the API client code
 bash ./generate-api-client.sh
 
-bash ./install-deps.sh
+### Installing the dependencies
+pushd ${PHP_SDK_GIT_REPO_FOLDER}/SalesForce
+    php -f ${SFMC_SWAGGER_ROOT_FOLDER}/cli/composer.phar install
+popd
 
-bash ./run-tests.sh
+### Running the unit tests
+phpunit -c ${PHP_SDK_GIT_REPO_FOLDER}/SalesForce/phpunit.xml.dist --testsuite=php-sdk-api,php-sdk-auth
 
-bash ./git-push-sdk.sh
+### Pushing the new branch to 
+git_push ${PHP_SDK_GIT_REPO_ID}
 
-bash ./create-pull-request.sh
+### Creating the PR
+create_pull_request ${PHP_SDK_GIT_REPO_ID}
 
 exit $?
