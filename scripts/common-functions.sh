@@ -9,24 +9,20 @@ git_clone()
     GIT_REPO_FOLDER="${SDK_REPOS_ROOT_FOLDER}/${GIT_REPO_ID}"
     GIT_REPO_URL="https://${GIT_USER_ID}:${GITHUB_TOKEN}@github.com/${GIT_USER_ID}/${GIT_REPO_ID}.git"
     
-    pushd $SDK_REPOS_ROOT_FOLDER
+    pushd ${SDK_REPOS_ROOT_FOLDER}
         # Clone the repository
-        echo "Cloning from repository ${GIT_REPO_URL}"
-        git clone $GIT_REPO_URL
+        echo "Cloning from repository ${GIT_REPO_URL} into ${PWD}"
+        git clone ${GIT_REPO_URL} ${GIT_REPO_FOLDER}
 
         # Create new branch for the release
-        pushd $SDK_GIT_REPO_ID
+        pushd ${GIT_REPO_FOLDER}
             git fetch
 
             # Making sure we have the lastest verion of the target branch
             git checkout $PR_TARGET_BRANCH
             git pull origin $PR_TARGET_BRANCH
-
-            # Creating the release branch
-            git checkout -B $PR_SOURCE_BRANCH 
         popd
     popd
-    fi
 }
 
 # Push code to the repository
@@ -37,7 +33,7 @@ git_push()
     GIT_REPO_URL="https://${GIT_USER_ID}:${GITHUB_TOKEN}@github.com/${GIT_USER_ID}/${GIT_REPO_ID}.git"
 
     # Change path to the root folder of the repo
-    pushd $GIT_REPO_FOLDER
+    pushd ${GIT_REPO_FOLDER}
         
         # Debug
         echo "Working directory for PUSH action: ${PWD}"
@@ -50,7 +46,7 @@ git_push()
 
         # Pushes the changes in the local repository up to the remote repository
         echo "Pushing to repository ${GIT_REPO_URL}"
-        git push origin $PR_SOURCE_BRANCH
+        git push -f origin ${PR_SOURCE_BRANCH}
     popd
 }
 
@@ -93,6 +89,5 @@ create_pull_request()
         else
             echo "PR from ${PR_SOURCE_BRANCH} to ${PR_TARGET_BRANCH} already open"
         fi
-
     popd
 }
