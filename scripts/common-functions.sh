@@ -70,7 +70,7 @@ git_push()
 
         # Pushes the changes in the local repository up to the remote repository
         echo "Git pushing to https://github.com/${GIT_USER_ID}/${GIT_REPO_ID}.git"
-        git push origin-with-token $BRANCH_NAME 2>&1 | grep -v 'To https'
+        git push $BRANCH_NAME 2>&1 | grep -v 'To https'
         exit $?
     popd
 }
