@@ -60,11 +60,6 @@ git_push()
 
         RELEASE_NOTE="Automation pipeline script update"
 
-        GIT_REMOTE=`git remote | grep "origin-with-token"`
-        if [ "$GIT_REMOTE" = "" ]; then
-            git remote add origin-with-token https://${GIT_USER_ID}:${GITHUB_TOKEN}@github.com/${GIT_USER_ID}/${GIT_REPO_ID}.git
-        fi
-
         # Adds the files in the local repository and stages them for commit.
         git add .
 
@@ -97,7 +92,7 @@ clone_sdk_git_repo()
     else
         echo "${SDK_GIT_REPO_ID} repo does not exist"
         pushd $SDK_REPOS_ROOT_FOLDER
-            git clone https://github.com/${GIT_USER_ID}/${SDK_GIT_REPO_ID} &&
+            git clone https://${GIT_USER_ID}:${GITHUB_TOKEN}@github.com/${GIT_USER_ID}/${GIT_REPO_ID}.git &&
             cd $SDK_GIT_REPO_ID &&
             git fetch &&
             git checkout $BRANCH_NAME &&
