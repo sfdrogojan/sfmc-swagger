@@ -3,7 +3,7 @@
 source "${BASH_SOURCE%/*}/common-variables.sh"
 
 # Clones a GitHub repository
-clone_sdk_git_repo()
+git_clone()
 {
     GIT_REPO_ID=$1
     GIT_REPO_FOLDER="${SDK_REPOS_ROOT_FOLDER}/${GIT_REPO_ID}"
