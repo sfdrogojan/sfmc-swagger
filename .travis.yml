@@ -16,5 +16,9 @@ addons:
 before_install:
   - wget https://getcomposer.org/download/1.9.0/composer.phar
   - sudo mv $PWD/composer.phar /usr/local/bin/composer
+  - sudo chmod +x /usr/local/bin/composer
+  - wget https://phar.phpunit.de/phpunit-8.phar
+  - sudo mv $PWD/phpunit-8.phar /usr/local/bin/phpunit
+  - sudo chmod +x /usr/local/bin/phpunit
 script:
   - cd ./scripts/php && /bin/bash ./run-automation-pipeline.sh
