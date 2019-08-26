@@ -56,6 +56,8 @@ git_push()
     # Change path to the root folder of the repo
     pushd $GIT_REPO_FOLDER
 
+        echo "Working directory for PUSH action: ${PWD}"
+
         RELEASE_NOTE="Automation pipeline script update"
 
         GIT_REMOTE=`git remote | grep "origin-with-token"`
