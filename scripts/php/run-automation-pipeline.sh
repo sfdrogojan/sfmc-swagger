@@ -3,6 +3,9 @@
 source ../setup-variables.sh
 source ../common-functions.sh
 
+# Installing dependencies
+sudo apt-get install -y python3
+
 # Preparing the environment
 pip install --user requests
 
@@ -27,3 +30,5 @@ git_push ${PHP_SDK_GIT_REPO_ID}
 
 ### Creating the PR
 python ../git_create_pr.py ${GITHUB_TOKEN} ${GIT_USER_ID} ${PHP_SDK_GIT_REPO_ID} ${PR_SOURCE_BRANCH} ${PR_TARGET_BRANCH}
+
+exit 0
