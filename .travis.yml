@@ -10,14 +10,12 @@ dist: bionic
 php:
   - 7.3
 
-python:
-  - 3.7
-
 addons:
   apt:
     update: true
 
 before_install:
+  - sudo apt-get update && apt-get install python3
   - wget https://getcomposer.org/download/1.9.0/composer.phar
   - sudo mv $PWD/composer.phar /usr/local/bin/composer
   - sudo chmod +x /usr/local/bin/composer
