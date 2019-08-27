@@ -4,8 +4,7 @@ source ../setup-variables.sh
 source ../common-functions.sh
 
 # Installing dependencies
-sudo apt-get install -y python3
-sudo apt-get install -y php7
+sudo apt-get update && apt-get install -y python3 php7
 
 # Preparing the environment
 pip install --user requests
