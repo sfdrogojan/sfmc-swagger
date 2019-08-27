@@ -4,7 +4,7 @@ branches:
     - dev
     - master
 
-language: php
+language: csharp
 sudo: required
 dist: bionic
 php:

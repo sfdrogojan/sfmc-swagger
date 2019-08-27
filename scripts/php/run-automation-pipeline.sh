@@ -5,6 +5,7 @@ source ../common-functions.sh
 
 # Installing dependencies
 sudo apt-get install -y python3
+sudo apt-get install -y php7.3
 
 # Preparing the environment
 pip install --user requests
