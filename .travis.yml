@@ -1,5 +1,6 @@
-language: csharp
+language: php
 dist: bionic
+sudo: required
 
 branches:
   only:
@@ -7,12 +8,7 @@ branches:
     - dev
     - master
 
-mono: none
-sudo: required
-
-dotnet: 2.2
-jdk: oraclejdk8
-php:
+    php:
   - 7.3
 
 addons:
@@ -20,12 +16,6 @@ addons:
     update: true
 
 before_install:
-  - wget https://archive.apache.org/dist/maven/maven-3/3.6.0/binaries/apache-maven-3.6.0-bin.zip
-  - unzip -qq apache-maven-3.6.0-bin.zip
-  - export M2_HOME=$PWD/apache-maven-3.6.0
-  - export PATH=$M2_HOME/bin:$PATH
-  - chmod -R +x cli 
-  - chmod -R +x scripts
   - wget https://getcomposer.org/download/1.9.0/composer.phar
   - sudo mv $PWD/composer.phar /usr/local/bin/composer
   - sudo chmod +x /usr/local/bin/composer
