@@ -27,5 +27,3 @@ git_push ${PHP_SDK_GIT_REPO_ID}
 
 ### Creating the PR
 python ../git_create_pr.py ${GITHUB_TOKEN} ${GIT_USER_ID} ${PHP_SDK_GIT_REPO_ID} ${PR_SOURCE_BRANCH} ${PR_TARGET_BRANCH}
-
-exit $?
