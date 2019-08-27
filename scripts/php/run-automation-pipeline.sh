@@ -4,11 +4,9 @@ source ../setup-variables.sh
 source ../common-functions.sh
 
 # Preparing the environment
-echo "deb http://archive.ubuntu.com/ubuntu/ bionic main" >> /etc/apt/sources.list
-echo "deb http://archive.ubuntu.com/ubuntu/ bionic-updates main" >> /etc/apt/sources.list
-echo "deb http://security.ubuntu.com/ubuntu bionic-security main" >> /etc/apt/sources.list
+sudo apt-get install -y software-properties-common && add-apt-repository ppa:ondrej/php
 
-sudo apt-get update && sudo apt-get install -y php7
+sudo apt-get update && sudo apt-get install -y php7.3
 pip install --user requests
 
 ### Cloning the GitHub repository and checkout the release branch
