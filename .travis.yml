@@ -8,7 +8,7 @@ branches:
     - dev
     - master
 
-    php:
+php:
   - 7.3
 
 addons:
