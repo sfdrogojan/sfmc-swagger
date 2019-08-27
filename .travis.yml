@@ -26,7 +26,6 @@ before_install:
   - export PATH=$M2_HOME/bin:$PATH
   - chmod -R +x cli 
   - chmod -R +x scripts
-  - cd scripts
   - wget https://getcomposer.org/download/1.9.0/composer.phar
   - sudo mv $PWD/composer.phar /usr/local/bin/composer
   - sudo chmod +x /usr/local/bin/composer
