@@ -1,4 +1,4 @@
-language: php
+language: csharp
 dist: bionic
 sudo: required
 
