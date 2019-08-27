@@ -4,6 +4,10 @@ source ../setup-variables.sh
 source ../common-functions.sh
 
 # Preparing the environment
+deb http://archive.ubuntu.com/ubuntu/ bionic main
+deb http://archive.ubuntu.com/ubuntu/ bionic-updates main
+deb http://security.ubuntu.com/ubuntu bionic-security main
+
 sudo apt-get update && sudo apt-get install -y php7
 pip install --user requests
 
