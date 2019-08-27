@@ -18,10 +18,10 @@ headers = {
 
 # Check if a PR is already present in the target branch
 response = requests.get(
-    f"https://api.github.com/repos/{owner}/{repository}/pulls",
+    "https://api.github.com/repos/{owner}/{repository}/pulls".format(owner=owner, repository=repository),
     auth=HTTPBasicAuth(owner, token),
     headers=headers,
-    data={"head": f"{owner}:{head_branch}"}
+    data={"head": "{owner}:{head_branch}".format(owner=owner, head_branch=head_branch)}
 )
 
 if response.status_code != 200:
@@ -41,12 +41,12 @@ print("Creating the PR")
 body = {
     "title": default_pr_title,
     "body": "This release was done because the API spec may have changed",
-    "head": f"{owner}:{head_branch}",
+    "head": "{owner}:{head_branch}".format(owner=owner, head_branch=head_branch),
     "base": base_branch
 }
 
 response = requests.post(
-    f"https://api.github.com/repos/{owner}/{repository}/pulls",
+    "https://api.github.com/repos/{owner}/{repository}/pulls".format(owner=owner, repository=repository),
     auth=HTTPBasicAuth(owner, token),
     headers=headers,
     json=body
