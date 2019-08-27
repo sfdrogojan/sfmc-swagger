@@ -18,5 +18,5 @@ PHP_SDK_GIT_REPO_FOLDER="${SDK_REPOS_ROOT_FOLDER}/${PHP_SDK_GIT_REPO_ID}"
 
 # Git vars
 GIT_USER_ID="sfadincescu"
-PR_SOURCE_BRANCH="release"
-PR_TARGET_BRANCH="master"
+PR_SOURCE_BRANCH="automation"
+PR_TARGET_BRANCH="feature/client-validation"

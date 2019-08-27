@@ -14,13 +14,16 @@ git_clone()
         echo "Cloning from repository ${GIT_REPO_URL} into ${PWD}"
         git clone ${GIT_REPO_URL} ${GIT_REPO_FOLDER}
 
-        # Create new branch for the release
+        # Create the new release branch if it's the case
         pushd ${GIT_REPO_FOLDER}
             git fetch
 
             # Making sure we have the lastest verion of the target branch
             git checkout $PR_TARGET_BRANCH
             git pull origin $PR_TARGET_BRANCH
+
+            # Checkout (or create the new release branch)
+            git checkout ${PR_SOURCE_BRANCH}
         popd
     popd
 }
@@ -36,10 +39,11 @@ git_push()
     pushd ${GIT_REPO_FOLDER}
         
         # Debug
-        echo "Working directory for PUSH action: ${PWD}"
+        echo "----- Working directory for PUSH action: ${PWD} -----"
+        git branch
 
         # Adds the files in the local repository and stages them for commit.
-        git add .
+        git add --all
 
         # Commits the tracked changes and prepares them to be pushed to a remote repository.
         git commit -m "SDK auto-update"

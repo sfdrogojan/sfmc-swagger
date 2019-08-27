@@ -3,13 +3,11 @@
 source ../setup-variables.sh
 source ../common-functions.sh
 
-### Cloning the GitHub repository
-git_clone ${PHP_SDK_GIT_REPO_ID}
+# Preparing the environment
+pip install --user requests
 
-# Checkout relevant branch (testing only)
-pushd ${PHP_SDK_GIT_REPO_FOLDER}
-    git checkout feature/client-validation
-popd
+### Cloning the GitHub repository and checkout the release branch
+git_clone ${PHP_SDK_GIT_REPO_ID}
 
 ### Generating the API client code
 bash ./generate-api-client.sh
@@ -22,15 +20,12 @@ popd
 ### Running the unit tests
 pushd ${PHP_SDK_GIT_REPO_FOLDER}
     phpunit -c ${PHP_SDK_GIT_REPO_FOLDER}/SalesForce/phpunit.xml.dist --testsuite=php-sdk-api,php-sdk-auth
-
-    ### Creating the release branch
-    git checkout -B $PR_SOURCE_BRANCH
 popd
 
 ### Pushing the new branch to 
 git_push ${PHP_SDK_GIT_REPO_ID}
 
 ### Creating the PR
-create_pull_request ${PHP_SDK_GIT_REPO_ID}
+python ../git_create_pr.py ${GITHUB_TOKEN} ${GIT_USER_ID} ${PHP_SDK_GIT_REPO_ID} ${PR_SOURCE_BRANCH} ${PR_TARGET_BRANCH}
 
 exit $?
