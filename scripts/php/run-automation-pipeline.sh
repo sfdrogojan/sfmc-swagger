@@ -4,9 +4,6 @@ source ../setup-variables.sh
 source ../common-functions.sh
 
 # Preparing the environment
-sudo apt-get install -y software-properties-common && add-apt-repository ppa:ondrej/php
-
-sudo apt-get update && sudo apt-get install -y php7.3
 pip install --user requests
 
 ### Cloning the GitHub repository and checkout the release branch
