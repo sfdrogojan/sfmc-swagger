@@ -3,6 +3,8 @@ import os
 import yaml
 from subprocess import CalledProcessError, check_output
 
+script_path = os.path.realpath(__file__)
+
 # Validating the existance of env variables
 if not 'TRAVIS_BUILD_DIR' in os.environ:
     print('TRAVIS_BUILD_DIR env variable was not found')
@@ -13,7 +15,7 @@ if not 'GITHUB_TOKEN' in os.environ:
     exit(255)
 
 # Loading the config
-with open('./config.yml', 'r') as file:
+with open(os.path.join(script_path, 'config.yml'), 'r') as file:
     config = yaml.safe_load(file)
 
 # Vars

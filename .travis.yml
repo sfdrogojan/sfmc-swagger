@@ -13,9 +13,10 @@ branches:
     - master
 
 php:
-  - '7.3'
-  
+  - "7.3"
+
 stages:
+  - compile
   - test
   - deploy
 
@@ -32,6 +33,11 @@ install:
 
 jobs:
   include:
+    - stage: compile
+      name: "Import code"
+      script: "python scripts/php/run_git_clone.py"
+    - name: "Generate code"
+      script: "bash ./scripts/php/generate-api-client.sh"
     - stage: test
       name: "Integration tests"
-      script: 'python scripts/php/run_integration_tests.py'
+      script: "python scripts/php/run_integration_tests.py"
