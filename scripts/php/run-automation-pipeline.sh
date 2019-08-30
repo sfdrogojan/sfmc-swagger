@@ -3,9 +3,6 @@
 source ../setup-variables.sh
 source ../common-functions.sh
 
-# Preparing the environment
-pip install --user requests
-
 ### Cloning the GitHub repository and checkout the release branch
 git_clone ${PHP_SDK_GIT_REPO_ID}
 

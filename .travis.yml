@@ -2,6 +2,10 @@ language: php
 dist: bionic
 sudo: required
 
+addons:
+  apt:
+    update: true
+
 branches:
   only:
     - develop
@@ -9,11 +13,11 @@ branches:
     - master
 
 php:
-  - 7.3
-
-addons:
-  apt:
-    update: true
+  - '7.3'
+  
+stages:
+  - test
+  - deploy
 
 before_install:
   - wget https://getcomposer.org/download/1.9.0/composer.phar
@@ -22,5 +26,12 @@ before_install:
   - wget https://phar.phpunit.de/phpunit-8.phar
   - sudo mv $PWD/phpunit-8.phar /usr/local/bin/phpunit
   - sudo chmod +x /usr/local/bin/phpunit
-script:
-  - cd ./scripts/php && /bin/bash ./run-automation-pipeline.sh
+  
+install:
+  - pip install --user requests
+
+jobs:
+  include:
+    - stage: test
+      name: "Integration tests"
+      script: 'python ./scripts/php/run_integration_tests.py'
