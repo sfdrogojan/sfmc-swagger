@@ -4,7 +4,7 @@ import subprocess
 class Git:
     ''' The class handles the GIT processes '''
 
-    def __init__(self, token: str, owner: str, repo: str, folder: str):
+    def __init__(self, token, owner, repo, folder):
         ''' Git class constructor '''
         self.__github_token = token
         self.__repo_owner = owner

@@ -5,12 +5,12 @@ from subprocess import CalledProcessError, check_output
 class Codebase:
     ''' Codebase processes class '''
 
-    def __init__(self, phpunit: str, folder: str):
+    def __init__(self, phpunit, folder):
         ''' Git class constructor '''
         self.__phpunit_exec = phpunit
         self.__repo_folder = folder
 
-    def integration_tests(self, tests: str):
+    def integration_tests(self, tests):
         # Vars
         config_file = os.path.join(self.__repo_folder, 'SalesForce', 'phpunit.xml.dist')
         testsuite = ','.join(tests)
