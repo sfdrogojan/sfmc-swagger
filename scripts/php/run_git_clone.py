@@ -3,7 +3,7 @@ import os
 import yaml
 from subprocess import CalledProcessError, check_output
 
-script_path = os.path.abspath(__file__)
+script_path = os.path.dirname(__file__)
 
 # Validating the existance of env variables
 if not 'TRAVIS_BUILD_DIR' in os.environ:
