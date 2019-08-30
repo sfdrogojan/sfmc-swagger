@@ -39,7 +39,7 @@ jobs:
       script: "python scripts/php/ci/run_git_clone.py"
     - stage: compile
       name: "Generate code"
-      script: "bash ./scripts/php/generate-api-client.sh"
+      script: "bash scripts/php/generate-api-client.sh"
     - stage: test
       name: "Integration tests"
       script: "python scripts/php/ci/run_integration_tests.py"
