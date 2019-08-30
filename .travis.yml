@@ -16,6 +16,7 @@ php:
   - "7.3"
 
 stages:
+  - setup
   - compile
   - test
   - deploy
@@ -33,10 +34,11 @@ install:
 
 jobs:
   include:
-    - stage: compile
+    - stage: setup
       name: "Import code"
       script: "python scripts/php/run_git_clone.py"
-    - name: "Generate code"
+    - stage: compile
+      name: "Generate code"
       script: "bash ./scripts/php/generate-api-client.sh"
     - stage: test
       name: "Integration tests"
