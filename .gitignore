@@ -1,3 +1,4 @@
+# IDE
 build-artifacts/
 .idea
 .vs/
@@ -5,3 +6,6 @@ build-artifacts/
 
 cli/client-generator-linux-x64
 cli/client-generator-win-x64
+
+# Python
+__pycache__*

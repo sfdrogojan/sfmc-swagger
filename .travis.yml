@@ -36,10 +36,10 @@ jobs:
   include:
     - stage: setup
       name: "Import code"
-      script: "python scripts/php/run_git_clone.py"
+      script: "python scripts/php/ci/run_git_clone.py"
     - stage: compile
       name: "Generate code"
       script: "bash ./scripts/php/generate-api-client.sh"
     - stage: test
       name: "Integration tests"
-      script: "python scripts/php/run_integration_tests.py"
+      script: "python scripts/php/ci/run_integration_tests.py"
