@@ -1,7 +1,7 @@
 {{>licenseInfo}}
 
-import superagent from "superagent";
-import querystring from "querystring";
+const superagent = require ('superagent');
+const querystring = require ('querystring');
 
 {{#emitJSDoc}}/**
 * @module {{#invokerPackage}}{{invokerPackage}}/{{/invokerPackage}}ApiClient
@@ -15,7 +15,7 @@ import querystring from "querystring";
 * @alias module:{{#invokerPackage}}{{invokerPackage}}/{{/invokerPackage}}ApiClient
 * @class
 */{{/emitJSDoc}}
-export default class ApiClient {
+module.exports = class ApiClient {
     constructor() {
         {{#emitJSDoc}}/**
          * The base URL against which to resolve every API call's (relative) path.
@@ -601,4 +601,3 @@ export default class ApiClient {
 * The default API client implementation.
 * @type {module:{{#invokerPackage}}{{invokerPackage}}/{{/invokerPackage}}ApiClient}
 */{{/emitJSDoc}}
-ApiClient.instance = new ApiClient();
