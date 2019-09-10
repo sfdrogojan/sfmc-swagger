@@ -13,7 +13,17 @@ public class BeanValidationException extends ValidationException {
     Set<ConstraintViolation<Object>> violations;
 
     public BeanValidationException(Set<ConstraintViolation<Object>> violations) {
+        super(getValidationsMessage(violations));
         this.violations = violations;
+    }
+
+    private static String getValidationsMessage(Set<ConstraintViolation<Object>> violations) {
+        StringBuilder sb = new StringBuilder();
+        for (ConstraintViolation<Object> constraintViolation : violations)
+        {
+            sb.append(constraintViolation.getPropertyPath() + " " + constraintViolation.getMessage() + "\n");
+        }
+        return sb.toString();
     }
 
     public Set<ConstraintViolation<Object>> getViolations() {

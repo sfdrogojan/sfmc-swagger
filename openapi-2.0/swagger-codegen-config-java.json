@@ -5,5 +5,7 @@
     "invokerPackage": "com.github.salesforce.marketingcloud.javasdk",
     "modelPackage": "com.github.salesforce.marketingcloud.javasdk.model",
     "apiPackage": "com.github.salesforce.marketingcloud.javasdk.api",
-    "hideGenerationTimestamp": true
+    "hideGenerationTimestamp": true,
+    "useBeanValidation": true,
+    "performBeanValidation": true
 }
