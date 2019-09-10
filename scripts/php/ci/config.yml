@@ -1,0 +1,7 @@
+repos:
+  phpsdk:
+    name: "sfmc-php-sdk"
+    owner: "sfadincescu"
+    tests:
+      - "php-sdk-api"
+      - "php-sdk-auth"

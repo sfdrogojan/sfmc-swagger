@@ -1,19 +1,45 @@
+language: php
+dist: bionic
+sudo: required
+
+addons:
+  apt:
+    update: true
+
 branches:
   only:
+    - develop
     - dev
     - master
 
-language: csharp
-mono: none
-sudo: required
-dist: xenial
-dotnet: 2.2
-jdk: oraclejdk8
 php:
-  - 7.3
+  - "7.3"
+
+stages:
+  - setup
+  - compile
+  - test
+  - deploy
 
 before_install:
- - wget https://getcomposer.org/download/1.9.0/composer.phar
- - php -f $PWD/composer.phar install
-script:
-  - /bin/bash ./scripts/php/run-automation-pipeline.sh
+  - wget https://getcomposer.org/download/1.9.0/composer.phar
+  - sudo mv $PWD/composer.phar /usr/local/bin/composer
+  - sudo chmod +x /usr/local/bin/composer
+  - wget https://phar.phpunit.de/phpunit-8.phar
+  - sudo mv $PWD/phpunit-8.phar /usr/local/bin/phpunit
+  - sudo chmod +x /usr/local/bin/phpunit
+
+install:
+  - pip install --user requests
+
+jobs:
+  include:
+    - stage: setup
+      name: "Import code"
+      script: "python scripts/php/ci/run_git_clone.py"
+    - stage: compile
+      name: "Generate code"
+      script: "bash scripts/php/generate-api-client.sh"
+    - stage: test
+      name: "Integration tests"
+      script: "python scripts/php/ci/run_integration_tests.py"
