@@ -1,16 +1,16 @@
 {{>licenseInfo}}
 
 {{=< >=}}
-const ApiClient = require('../ApiClient'); 
 <#imports>const <import> = require ('../<#modelPackage><&modelPackage>/</modelPackage><import>');
 </imports>
+const BaseApi = require('./BaseApi');
 
 <#emitJSDoc>/**
 * <baseName> service.
 * @module <#invokerPackage><&invokerPackage>/</invokerPackage><#apiPackage><&apiPackage>/</apiPackage><classname>
 * @version <projectVersion>
 */</emitJSDoc>
-module.exports = class <classname> {
+module.exports = class <classname> extends BaseApi {
 
     <#emitJSDoc>/**
     * Constructs a new <&classname>. <#description>
@@ -20,8 +20,8 @@ module.exports = class <classname> {
     * @param {module:<#invokerPackage><&invokerPackage>/</invokerPackage>ApiClient} [apiClient] Optional API client implementation to use,
     * default to {@link module:<#invokerPackage><&invokerPackage>/</invokerPackage>ApiClient#instance} if unspecified.
     */</emitJSDoc>
-    constructor(apiClient) {
-        this.apiClient = apiClient || ApiClient.instance;
+    constructor(authBasePath, clientId, clientSecret, accountId, scope) {
+        super(authBasePath, clientId, clientSecret, accountId, scope);
     }
 
 <#operations><#operation><#emitJSDoc><^usePromises>

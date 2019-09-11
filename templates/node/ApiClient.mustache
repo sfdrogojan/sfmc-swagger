@@ -15,8 +15,10 @@ const querystring = require ('querystring');
 * @alias module:{{#invokerPackage}}{{invokerPackage}}/{{/invokerPackage}}ApiClient
 * @class
 */{{/emitJSDoc}}
-module.exports = class ApiClient {
-    constructor() {
+
+class ApiClient {
+    constructor(runtimeInformationProvider) {
+        this.runtimeInformationProvider = runtimeInformationProvider;
         {{#emitJSDoc}}/**
          * The base URL against which to resolve every API call's (relative) path.
          * @type {String}
@@ -47,7 +49,9 @@ module.exports = class ApiClient {
          * @type {Array.<String>}
          * @default {}
          */{{/emitJSDoc}}
-        this.defaultHeaders = {};
+        this.defaultHeaders = {
+            'User-Agent' : this.runtimeInformationProvider.getUserAgentString()
+        };
 
         /**
          * The default HTTP timeout for all API calls.
@@ -601,3 +605,5 @@ module.exports = class ApiClient {
 * The default API client implementation.
 * @type {module:{{#invokerPackage}}{{invokerPackage}}/{{/invokerPackage}}ApiClient}
 */{{/emitJSDoc}}
+
+module.exports = ApiClient;
