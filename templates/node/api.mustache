@@ -66,7 +66,7 @@ module.exports = class <classname> extends BaseApi {
         '<baseName>': <#collectionFormat>this.apiClient.buildCollectionParam(<#required><paramName></required><^required>opts['<paramName>']</required>, '<collectionFormat>')</collectionFormat><^collectionFormat><#required><paramName></required><^required>opts['<paramName>']</required></collectionFormat><#hasMore>,</hasMore></formParams>
       };
 
-      let authNames = [<#authMethods>'<name>'<#hasMore>, </hasMore></authMethods>];
+      let authName = '';
       let contentTypes = [<#consumes>'<& mediaType>'<#hasMore>, </hasMore></consumes>];
       let accepts = [<#produces>'<& mediaType>'<#hasMore>, </hasMore></produces>];
       let returnType = <#returnType><&returnType></returnType><^returnType>null</returnType>;
@@ -74,7 +74,7 @@ module.exports = class <classname> extends BaseApi {
       return this.apiClient.callApi(
         '<&path>', '<httpMethod>',
         pathParams, queryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType<^usePromises>, callback</usePromises>
+        authName, contentTypes, accepts, returnType<^usePromises>, callback</usePromises>
       );
     }
 <#usePromises>
