@@ -69,7 +69,7 @@ module.exports = class <classname> extends BaseApi {
       let authName = '';
       let contentTypes = [<#consumes>'<& mediaType>'<#hasMore>, </hasMore></consumes>];
       let accepts = [<#produces>'<& mediaType>'<#hasMore>, </hasMore></produces>];
-      let returnType = <#returnType><&returnType></returnType><^returnType>null</returnType>;
+      let returnType = <#returnType>Object</returnType><^returnType>null</returnType>;
 
       return this.apiClient.callApi(
         '<&path>', '<httpMethod>',

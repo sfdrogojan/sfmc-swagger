@@ -431,14 +431,11 @@ class ApiClient {
         {{#usePromises}}return new Promise((resolve, reject) => {
             request.end((error, response) => {
                 if (error) {
-                    reject(ApiExceptionFactory.buildCustomException(caller, error));
+                    reject(ApiExceptionFactory.createCustomException(caller, error));
                 } else {
                     try {
                         var data = this.deserialize(response, returnType);
-                        if (this.enableCookies && typeof window === 'undefined'){
-                            this.agent.saveCookies(response);
-                        }
-
+                        
                         resolve({data, response});
                     } catch (err) {
                         reject(err);

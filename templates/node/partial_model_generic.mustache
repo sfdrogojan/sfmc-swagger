@@ -1,6 +1,8 @@
 
 {{#models}}{{#model}}
 
+const InvalidModelException = require('../Exception/InvalidModelException');
+
 {{#emitJSDoc}}/**
 * The {{classname}} model module.
 * @module {{#invokerPackage}}{{invokerPackage}}/{{/invokerPackage}}{{#modelPackage}}{{modelPackage}}/{{/modelPackage}}{{classname}}
@@ -18,18 +20,37 @@ module.exports = class {{classname}}{{#parent}}{{^parentModel}}{{#vendorExtensio
     */{{/emitJSDoc}}
 
     constructor({{#vendorExtensions.x-all-required}}{{name}}{{^-last}}, {{/-last}}{{/vendorExtensions.x-all-required}}) {
-        {{#parent}}{{^parentModel}}{{#vendorExtensions.x-isArray}}
-        super();
-        {{/vendorExtensions.x-isArray}}{{/parentModel}}{{/parent}}
+        {{#parent}}{{^parentModel}}{{#vendorExtensions.x-isArray}}super();{{/vendorExtensions.x-isArray}}{{/parentModel}}{{/parent}}
+        {{#useInheritance}}{{#parentModel}}{{classname}}.call(this{{#vendorExtensions.x-all-required}}, {{name}}{{/vendorExtensions.x-all-required}});{{/parentModel}}
+        {{#interfaceModels}}{{classname}}.call(this{{#vendorExtensions.x-all-required}}, {{name}}{{/vendorExtensions.x-all-required}});
+        {{/interfaceModels}}{{/useInheritance}}{{#vars}}{{#required}}
+        // verify the required parameter '{{name}}' is set
+        if({{name}} === undefined || {{name}} === null){
+            throw new InvalidModelException('"{{name}}" is a required property for {{classname}} and cannot be undefined or null');
+        }
+        else{ {{#hasValidation}}{{#maxLength}}
+            if ({{name}}.length > {{maxLength}}) {
+                throw new InvalidModelException('invalid length for "{{name}}". It must be smaller than or equal to {{maxLength}}.');
+            } {{/maxLength}}{{#minLength}}
+            if ({{name}}.length < {{minLength}}) {
+                throw new InvalidModelException('invalid length for "{{name}}". It must be bigger than or equal to {{minLength}}.');
+            } {{/minLength}}{{#maximum}}
+            if ({{name}} >{{#exclusiveMaximum}}={{/exclusiveMaximum}}{{maximum}}) {
+                throw new InvalidModelException('invalid value for "{{name}}". It must be smaller than {{^exclusiveMaximum}} or equal to {{/exclusiveMaximum}}{{maximum}}.');
+            }{{/maximum}}{{#minimum}}
+            if ({{name}} <{{#exclusiveMinimum}}={{/exclusiveMinimum}}{{minimum}}) {
+                throw new InvalidModelException('invalid value for "{{name}}". It must be bigger than {{^exclusiveMinimum}} or equal to {{/exclusiveMinimum}}{{minimum}}.');
+            }{{/minimum}}{{#maxItems}}
+            if ({{name}}.length > {{maxItems}}) {
+                throw new InvalidModelException('invalid size for "{{name}}". Number of items must be less than or equal to {{maxItems}}.');
+            }{{/maxItems}}{{#minItems}}
+            if ({{name}}.length < {{minItems}}) {
+                throw new InvalidModelException('invalid size for "{{name}}". Number of items must be greater than or equal to {{minItems}}.');
+            }{{/minItems}}{{/hasValidation}}
+            this['{{baseName}}'] = {{name}};
+        } {{/required}}
 
-        {{#useInheritance}}
-        {{#parentModel}}{{classname}}.call(this{{#vendorExtensions.x-all-required}}, {{name}}{{/vendorExtensions.x-all-required}});{{/parentModel}}
-        {{#interfaceModels}}{{classname}}.call(this{{#vendorExtensions.x-all-required}}, {{name}}{{/vendorExtensions.x-all-required}});{{/interfaceModels}}
-        {{/useInheritance}}
-
-        {{#vars}}{{#required}}this['{{baseName}}'] = {{name}};{{/required}}{{/vars}}
-
-        {{#parent}}{{^parentModel}}return this;{{/parentModel}}{{/parent}}
+        {{/vars}}{{#parent}}{{^parentModel}}return this;{{/parentModel}}{{/parent}}
     }
 
     {{#emitJSDoc}}/**
