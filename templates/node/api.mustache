@@ -20,8 +20,8 @@ module.exports = class <classname> extends BaseApi {
     * @param {module:<#invokerPackage><&invokerPackage>/</invokerPackage>ApiClient} [apiClient] Optional API client implementation to use,
     * default to {@link module:<#invokerPackage><&invokerPackage>/</invokerPackage>ApiClient#instance} if unspecified.
     */</emitJSDoc>
-    constructor(authBasePath, clientId, clientSecret, accountId, scope) {
-        super(authBasePath, clientId, clientSecret, accountId, scope);
+    constructor(authBaseUrl, clientId, clientSecret, accountId, scope) {
+        super(authBaseUrl, clientId, clientSecret, accountId, scope);
     }
 
 <#operations><#operation><#emitJSDoc><^usePromises>
