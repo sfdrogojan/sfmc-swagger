@@ -3,6 +3,9 @@ const path = require('path');
 
 (() => {
     (() => {
+        if(process.argv.length < 3){
+            throw new Error('The script is expecting the full path to the folder containing the generated Api classes as argument');
+        }
         const apiClassesFolderPath = process.argv[2];
         const indentation = '\n\t\t    ';
         const fileExtension = '.js';
