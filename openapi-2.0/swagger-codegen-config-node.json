@@ -1,0 +1,7 @@
+{
+    "projectName": "SalesforceMarketingCloud",
+    "useES6": true,
+    "usePromises": true,
+    "modelPackage": "Model",
+    "apiPackage": "Api"
+}
